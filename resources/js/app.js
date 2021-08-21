@@ -1,32 +1,40 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
 require('./bootstrap');
 
-window.Vue = require('vue').default;
+// Se crean los elementos de Vue
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+import { createApp, defineAsyncComponent } from 'vue';
+import { Quasar } from 'quasar'
+import router from './routers/welcomeRouter.js';
+import vueRecaptcha from 'vue3-recaptcha2';
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+// se importan los componentes
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+import WelcomeLayout from './components/welcome/WelcomeLayout.vue'
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+//Se crea la app y se anexan los componentes y plugins
 
-const app = new Vue({
-    el: '#app',
-});
+createApp({
+    components : {
+        // app
+        'welcome-layout': WelcomeLayout,
+    },
+})  
+    .component('recaptcha', vueRecaptcha)
+    .use(router)
+    .use(Quasar, {
+        config: {
+          brand: {
+            primary: '#003e7d',
+            secondary: '#26A69A',
+            accent: '#9C27B0',
+      
+            dark: '#1d1d1d',
+      
+            positive: '#21BA45',
+            negative: '#C10015',
+            info: '#31CCEC',
+            warning: '#F2C037'
+          }
+        }
+      })
+    .mount("#welcome")
