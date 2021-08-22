@@ -12,12 +12,11 @@
 
     {{-- STYLE --}}
     <link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
-    @if (Route::current()->getName() !== "welcome")
-        <!-- Fonts -->
+            <!-- Fonts -->
+        
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
         <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,700,900&amp;subset=latin-ext" rel="stylesheet">
-    @endif
 </head>
     
 
@@ -28,6 +27,8 @@
     </main>   
     <!-- Scripts -->
     <script src="{{ asset('js/welcome.js') }}"></script>
+    <script src="{{asset('js/particulas.js')}}"></script>
+    <script src="{{asset('js/start.js')}}"></script>
 </body>
 
 

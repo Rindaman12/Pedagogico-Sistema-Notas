@@ -7,7 +7,7 @@ const routes = [
     {
         path: '/',
         name: 'welcome',
-        component: () => import('../components/welcome/WelcomeLayout.vue'),
+        component: () => import('../components/welcome/WelcomeView.vue'),
         props: true
     },
     {
