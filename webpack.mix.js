@@ -11,11 +11,18 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/welcome.js', 'public/js')
-    .vue()
-    .sass('resources/sass/welcome.scss', 'public/css')
-    // Compilation Options
-    .options({
-        processCssUrls: false
-    })
-    .vue();
+ mix
+ // 
+ // Vue instances
+     .js('resources/js/app.js', 'public/js')
+     .js('resources/js/welcome.js', 'public/js')
+ 
+ // Styles
+     .sass('resources/sass/app.scss', 'public/css')
+     .sass('resources/sass/welcome.scss', 'public/css')
+ 
+ // Compilation Options
+     .options({
+         processCssUrls: false
+     })
+     .vue();

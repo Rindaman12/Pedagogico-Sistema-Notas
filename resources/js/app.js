@@ -4,22 +4,20 @@ require('./bootstrap');
 
 import { createApp, defineAsyncComponent } from 'vue';
 import { Quasar } from 'quasar'
-import router from './routers/welcomeRouter.js';
-import vueRecaptcha from 'vue3-recaptcha2';
+import router from './routers/appRouter.js';
 
 // se importan los componentes
 
-import WelcomeLayout from './components/welcome/WelcomeLayout.vue'
+import AppLayout from './components/app/AppLayout.vue'
 
 //Se crea la app y se anexan los componentes y plugins
 
 createApp({
     components : {
         // app
-        'welcome-layout': WelcomeLayout,
+        'app-layout': AppLayout,
     },
 })  
-    .component('recaptcha', vueRecaptcha)
     .use(router)
     .use(Quasar)
-    .mount("#welcome")
+    .mount("#app")

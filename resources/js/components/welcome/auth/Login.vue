@@ -76,8 +76,6 @@ import { ref } from "vue";
 
 export default {
     setup() {
-        const $q = useQuasar();
-
         const usuario = ref(null);
         const password = ref(null);
 
@@ -92,12 +90,13 @@ export default {
         };
     },
     methods: {
+
         login(e) {
             let data = Object.fromEntries(new FormData(e.target));
             axios
                 .post("/login", data)
                 .then((res) => {
-                    $q.notify({
+                    useQuasar().notify({
                         color: "green-4",
                         textColor: "white",
                         icon: "cloud_done",
@@ -105,7 +104,7 @@ export default {
                     });
                 })
                 .catch((err) => {
-                    $q.notify({
+                    useQuasar().notify({
                         color: "red-4",
                         textColor: "white",
                         icon: "cloud_done",

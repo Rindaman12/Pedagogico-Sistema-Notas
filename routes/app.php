@@ -13,14 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::group(['middleware' => 'auth'], function () {
+//Ruta del home de la app
+    Route::get('home', function () {
+        return view('inicio');
+    })->name('inicio');
+
 });
 
-//Archivo de rutas de Auth
 
-Route::group([], __DIR__ . '/auth.php');
-
-//Archivo de rutas de app
-
-Route::group([], __DIR__ . '/app.php');

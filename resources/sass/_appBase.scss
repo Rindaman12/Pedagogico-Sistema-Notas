@@ -1,0 +1,129 @@
+/* reset default settings of body */
+
+body {
+    background: #fff;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    /* ---- stats.js ---- */
+
+    .count-particles {
+        background: #000022;
+        position: absolute;
+        top: 48px;
+        left: 0;
+        width: 80px;
+        color: #13e8e9;
+        font-size: 0.8em;
+        text-align: left;
+        text-indent: 4px;
+        line-height: 14px;
+        padding-bottom: 2px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-weight: bold;
+    }
+
+    .js-count-particles {
+        font-size: 1.1em;
+    }
+
+    #stats,
+    .count-particles {
+        user-select: none;
+        margin-top: 5px;
+        margin-left: 5px;
+    }
+
+    #stats {
+        border-radius: 3px 3px 0 0;
+        overflow: hidden;
+    }
+
+    .count-particles {
+        border-radius: 0 0 3px 3px;
+    }
+
+    /* ---- particles.js container ---- */
+
+    #particles-js {
+        position: fixed;
+        top: 0;
+        left: 0;
+        // z-index: 5000;
+        height: 100vh;
+        width: 100vw;
+        background: rgba(0, 0, 0, 0.75);
+    }
+
+    /* .links{
+        position: fixed ;
+        z-index: 1100 ;
+        top: 50%;
+    } */
+
+    .welcome {
+        font-family: "Montserrat", sans-serif;
+    }
+
+    .welcome-image {
+        background-image: url("../images/bg1.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        height: 90vh;
+    }
+    .ss-image {
+        max-width: 500px;
+        width: 90%;
+    }
+
+    .sg-title {
+        color: #ffc107;
+        font: {
+            size: 40px;
+            weight: 700;
+        }
+        margin-bottom: 0.5em;
+    }
+
+    @media screen and (max-width: 768px) {
+        .ss-image {
+            max-width: 500px;
+        }
+        .ss-main {
+            padding-top: 3rem;
+        }
+    }
+}
+
+.footer {
+    width: 100%;
+    background: linear-gradient(to right, #3b3b3b, #1e1e1e, #1e1e1e, #3b3b3b);
+    color: rgb(225, 225, 225);
+    height: 40px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: flex-end;
+    margin-top: 20px;
+}
+
+//Estilos de los forms
+
+.my-card {
+    width: 100%;
+    max-width: 450px;
+    margin: auto;
+    margin-top: 4%;
+    align-self: center;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background: radial-gradient(circle, #35a2ff 0%, #014a88 100%);
+}
