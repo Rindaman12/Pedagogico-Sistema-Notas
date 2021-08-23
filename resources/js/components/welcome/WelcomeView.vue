@@ -1,25 +1,23 @@
 <template>
-<div class="welcome-image"> 
-    <div id="particles-js"></div>
+    <div class="welcome-image">
+        <div id="particles-js"></div>
 
-    <div class="welcome">
-        <img
-            class="welcome-img"
-            src="/images/logoss.png"
-            alt="logo"
-            width=""
-            height=""
-        />
-        <h1 class="welcome-title text-thin">UPEL</h1>
-    </div>
+        <div class="welcome">
+            <img
+                class="welcome-img"
+                src="/images/Upel.png"
+                alt="logo"
+                width=""
+                height=""
+            />
+            <h1 class="welcome-title text-thin">UPEL</h1>
+        </div>
     </div>
 </template>
 
-<script>
-export default {};
-</script>
-
 <style lang="scss" scoped>
+
+
 .welcome {
     height: 100%;
     max-width: 600px;
