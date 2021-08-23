@@ -7,11 +7,10 @@
                         <div class="text-h6" color="white">Iniciar Sesion</div>
                     </q-card-section>
 
-
                     <q-card-section class="q-pt-none">
                         <q-input
                             filled
-                            v-model="name"
+                            v-model="user"
                             label="Usuario"
                             hint="Coloca tu nombre de usuario"
                             lazy-rules
@@ -28,7 +27,7 @@
                     <q-card-section>
                         <q-input
                             filled
-                            v-model="age"
+                            v-model="password"
                             label="Contraseña"
                             hint="Coloca Tu Contraseña"
                             lazy-rules
@@ -64,3 +63,34 @@
     </div>
 </template>
 
+<script>
+import { useQuasar } from "quasar";
+import { ref } from "vue";
+
+export default {
+    setup() {
+        const $q = useQuasar();
+
+        const user = ref(null);
+        const password = ref(null);
+
+        return {
+            user,
+            password,
+            onSubmit() {
+                $q.notify({
+                    color: "green-4",
+                    textColor: "white",
+                    icon: "cloud_done",
+                    message: "Logueado Exitosamente",
+                });
+            },
+
+            onReset() {
+                user.value = null;
+                password.value = null;
+            },
+        };
+    },
+};
+</script>

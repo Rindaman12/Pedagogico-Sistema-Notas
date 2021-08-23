@@ -4,13 +4,15 @@
             <q-card class="my-card text-white">
                 <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
                     <q-card-section class="header">
-                        <div class="text-h6" color="white">Recuperar Contraseña</div>
+                        <div class="text-h6" color="white">
+                            Recuperar Contraseña
+                        </div>
                     </q-card-section>
 
                     <q-card-section class="q-pt-none">
                         <q-input
                             filled
-                            v-model="name"
+                            v-model="email"
                             label="Email"
                             hint="Coloca tu Email de recuperacion"
                             lazy-rules
@@ -45,15 +47,36 @@
     </div>
 </template>
 
+<script>
+import { useQuasar } from "quasar";
+import { ref } from "vue";
+
+export default {
+    setup() {
+        const $q = useQuasar();
+
+        const email = ref(null);
+
+        return {
+            email,
+            onSubmit() {
+                $q.notify({
+                    color: "green-4",
+                    textColor: "white",
+                    icon: "cloud_done",
+                    message: "Enviando Correo...",
+                });
+            },
+            onReset() {
+                email.value = null;
+            },
+        };
+    },
+};
+</script>
+
 <style scoped>
 .my-card {
-    width: 100%;
-    max-width: 450px;
-    margin: auto;
     margin-top: 8%;
-    align-self: center;
-    justify-self: center;
-    display: flex;
-    flex-direction: column;
 }
 </style>
