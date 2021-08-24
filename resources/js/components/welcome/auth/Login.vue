@@ -71,7 +71,7 @@
 </template>
 
 <script>
-import { useQuasar } from "quasar";
+import Swal from 'sweetalert2'
 import { ref } from "vue";
 
 export default {
@@ -89,27 +89,34 @@ export default {
             },
         };
     },
-    methods: {
+    methods:{
+        showAlert(type, title, message) {
+            Swal.fire({
+                icon: type,
+                title: title,
+                text: message,
+                confirmButtonText: "Ok",
+            });
+        },
 
         login(e) {
             let data = Object.fromEntries(new FormData(e.target));
             axios
                 .post("/login", data)
                 .then((res) => {
-                    useQuasar().notify({
-                        color: "green-4",
-                        textColor: "white",
-                        icon: "cloud_done",
-                        message: "Logueado Exitosamente",
-                    });
+                   this.showAlert(
+                        "success",
+                        "Inicio De Sesion",
+                        'Logueado Exitosamente'
+                        )
+                 location.href = "/home"
                 })
                 .catch((err) => {
-                    useQuasar().notify({
-                        color: "red-4",
-                        textColor: "white",
-                        icon: "cloud_done",
-                        message: "Error, Revise Los Datos Por Favor.",
-                    });
+                   this.showAlert(
+                        "error",
+                        "Error",
+                        'Revise Los Datos Por Favor.'
+                        )
                 });
         },
     },
