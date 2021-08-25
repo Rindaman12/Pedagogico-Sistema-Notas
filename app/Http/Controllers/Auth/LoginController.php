@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -45,6 +46,12 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function logout()
+    {
+        Session::flush();
+        return redirect()->route('login');
     }
 
     // Esta function cambiara el parametro a utilizar para iniciar sesion, debido a que laravel auth
