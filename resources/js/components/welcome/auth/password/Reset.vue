@@ -12,7 +12,7 @@
 
                     <q-card-section class="header">
                         <div class="text-h6" color="white">
-                            Reiniciar Contraseña y Email
+                            Reiniciar Contraseña
                         </div>
                     </q-card-section>
 
