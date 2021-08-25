@@ -2,7 +2,13 @@
     <div class="welcome-image">
         <div class="q-pa-md row items-start q-gutter-md">
             <q-card class="my-card text-white">
-                <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
+                <q-form
+                    @submit.prevent="resetPass"
+                    @reset="onReset"
+                    class="q-gutter-md"
+                >
+                    <input-csfr customName="token" />
+
                     <q-card-section class="header">
                         <div class="text-h6" color="white">
                             Recuperar Contraseña
@@ -11,11 +17,12 @@
 
                     <q-card-section class="q-pt-none">
                         <q-input
-                            filled
+                           filled
+                            name="email"
+                            lazy-rules
                             v-model="email"
                             label="Email"
                             hint="Coloca tu Email de recuperacion"
-                            lazy-rules
                             :rules="[
                                 (val) =>
                                     (val && val.length > 0) ||
@@ -48,29 +55,67 @@
 </template>
 
 <script>
-import { useQuasar } from "quasar";
+import Csfr from "../Csrf";
+import Swal from "sweetalert2";
+
 import { ref } from "vue";
 
 export default {
+    components: {
+        inputCsfr: Csfr,
+    },
     setup() {
-        const $q = useQuasar();
-
         const email = ref(null);
 
         return {
             email,
-            onSubmit() {
-                $q.notify({
-                    color: "green-4",
-                    textColor: "white",
-                    icon: "cloud_done",
-                    message: "Enviando Correo...",
-                });
-            },
+
             onReset() {
                 email.value = null;
             },
         };
+    },
+
+    data() {
+        return {
+            message: "",
+            showMessage: false,
+            errorEmail: false,
+            timer: null,
+            isMailSended: false,
+        };
+    },
+    methods: {
+        showAlert(type, title, message) {
+            Swal.fire({
+                icon: type,
+                title: title,
+                text: message,
+                confirmButtonText: "Ok",
+            });
+        },
+        resetPass(e) {
+            this.loading = true;
+            let data = Object.fromEntries(new FormData(e.target));
+            this.valid();
+            axios
+                .post("/password/email", data)
+                .then((res) => {
+                    this.showAlert("success", res.data.message, "");
+                })
+                .catch((err) => {
+                    this.showAlert(
+                        "error",
+                        "Error",
+                        "Revise Los Datos Por Favor."
+                    );
+                });
+        },
+        valid() {
+            this.showMessage = false;
+            this.errorEmail = false;
+            clearInterval(this.timer);
+        },
     },
 };
 </script>
