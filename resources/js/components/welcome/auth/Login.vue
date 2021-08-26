@@ -7,6 +7,8 @@
                     @reset="onReset"
                     class="q-gutter-md"
                 >
+                    <input-csfr />
+
                     <q-card-section class="header">
                         <div class="text-h6" color="white">Iniciar Sesion</div>
                     </q-card-section>
@@ -71,10 +73,14 @@
 </template>
 
 <script>
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
+import Csfr from "./Csrf";
 import { ref } from "vue";
 
 export default {
+    components: {
+        inputCsfr: Csfr,
+    },
     setup() {
         const usuario = ref(null);
         const password = ref(null);
@@ -89,7 +95,7 @@ export default {
             },
         };
     },
-    methods:{
+    methods: {
         showAlert(type, title, message) {
             Swal.fire({
                 icon: type,
@@ -104,19 +110,19 @@ export default {
             axios
                 .post("/login", data)
                 .then((res) => {
-                   this.showAlert(
+                    this.showAlert(
                         "success",
                         "Inicio De Sesion",
-                        'Logueado Exitosamente'
-                        )
-                 location.href = "/home"
+                        "Logueado Exitosamente"
+                    );
+                    location.href = "/home";
                 })
                 .catch((err) => {
-                   this.showAlert(
+                    this.showAlert(
                         "error",
                         "Error",
-                        'Revise Los Datos Por Favor.'
-                        )
+                        "Revise Los Datos Por Favor."
+                    );
                 });
         },
     },
@@ -125,7 +131,6 @@ export default {
 
 <style>
 .welcome-image {
-
-height: 85vh;
+    height: 85vh;
 }
 </style>

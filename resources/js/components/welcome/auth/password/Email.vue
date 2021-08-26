@@ -7,7 +7,7 @@
                     @reset="onReset"
                     class="q-gutter-md"
                 >
-                    <input-csfr customName="token" />
+                    <input-csfr />
 
                     <q-card-section class="header">
                         <div class="text-h6" color="white">
