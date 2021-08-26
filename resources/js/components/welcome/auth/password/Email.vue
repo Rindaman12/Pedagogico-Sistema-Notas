@@ -125,8 +125,4 @@ export default {
     margin-top: 8%;
 }
 
-.welcome-image {
-
-height: 85vh;
-}
 </style>

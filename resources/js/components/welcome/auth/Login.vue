@@ -1,5 +1,6 @@
 <template>
     <div class="welcome-image">
+
         <div class="q-pa-md row items-start q-gutter-md">
             <q-card class="my-card text-white">
                 <q-form
@@ -75,7 +76,7 @@
                                 type="submit"
                                 color="primary"
                                 name="enviar"
-                                :disabled="disable || loading"
+                                :disabled="disable"
                             />
                             <q-btn
                                 label="Limpiar"
@@ -88,7 +89,8 @@
                 </q-form>
             </q-card>
         </div>
-    </div>
+                </div>
+
 </template>
 
 <script>
@@ -165,3 +167,4 @@ export default {
     },
 };
 </script>
+

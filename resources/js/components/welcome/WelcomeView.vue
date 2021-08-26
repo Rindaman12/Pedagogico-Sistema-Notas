@@ -57,8 +57,4 @@
     }
 }
 
-.welcome-image {
-
-height: 90vh;
-}
 </style>
