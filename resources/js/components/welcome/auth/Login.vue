@@ -52,11 +52,30 @@
                     <q-separator inset />
 
                     <q-card-section>
+                        <recaptcha
+                            v-if="showRecaptcha"
+                            class="justify-content-center"
+                            siteKey="6LcVBCYcAAAAANyRP9722ZYtHWyRnNLUOk8iWFAc"
+                            size="normal"
+                            theme="light"
+                            :tabindex="0"
+                            @verify="recaptchaVerified"
+                            @expire="recaptchaExpired"
+                            @fail="recaptchaFailed"
+                            ref="recaptcha"
+                        />
+                    </q-card-section>
+
+                    <q-separator inset />
+
+                    <q-card-section>
                         <div>
                             <q-btn
                                 label="Enviar"
                                 type="submit"
                                 color="primary"
+                                name="enviar"
+                                :disabled="disable || loading"
                             />
                             <q-btn
                                 label="Limpiar"
@@ -80,6 +99,14 @@ import { ref } from "vue";
 export default {
     components: {
         inputCsfr: Csfr,
+    },
+    data() {
+        return {
+            showRecaptcha: true,
+            disable: true,
+
+            loading: false,
+        };
     },
     setup() {
         const usuario = ref(null);
@@ -125,12 +152,16 @@ export default {
                     );
                 });
         },
+
+        // Recaptcha methods
+        recaptchaVerified(res) {
+            this.disable = false;
+        },
+        recaptchaExpired() {
+            this.$refs.recaptcha.reset();
+            this.disable = true;
+        },
+        recaptchaFailed() {},
     },
 };
 </script>
-
-<style>
-.welcome-image {
-    height: 85vh;
-}
-</style>
