@@ -17,7 +17,7 @@
 
                     <q-card-section class="q-pt-none">
                         <q-input
-                           filled
+                            filled
                             name="email"
                             lazy-rules
                             v-model="email"
@@ -34,11 +34,30 @@
                     <q-separator inset />
 
                     <q-card-section>
+                        <recaptcha
+                            v-if="showRecaptcha"
+                            class="justify-content-center"
+                            siteKey="6LcVBCYcAAAAANyRP9722ZYtHWyRnNLUOk8iWFAc"
+                            size="normal"
+                            theme="light"
+                            :tabindex="0"
+                            @verify="recaptchaVerified"
+                            @expire="recaptchaExpired"
+                            @fail="recaptchaFailed"
+                            ref="recaptcha"
+                        />
+                    </q-card-section>
+
+                    <q-separator inset />
+
+                    <q-card-section>
                         <div>
                             <q-btn
                                 label="Enviar"
                                 type="submit"
                                 color="primary"
+                                name="enviar"
+                                :disabled="disable"
                             />
                             <q-btn
                                 label="Limpiar"
@@ -64,6 +83,7 @@ export default {
     components: {
         inputCsfr: Csfr,
     },
+  
     setup() {
         const email = ref(null);
 
@@ -83,6 +103,8 @@ export default {
             errorEmail: false,
             timer: null,
             isMailSended: false,
+            showRecaptcha: true,
+            disable: true,
         };
     },
     methods: {
@@ -116,13 +138,22 @@ export default {
             this.errorEmail = false;
             clearInterval(this.timer);
         },
+
+        // Recaptcha methods
+        recaptchaVerified(res) {
+            this.disable = false;
+        },
+        recaptchaExpired() {
+            this.$refs.recaptcha.reset();
+            this.disable = true;
+        },
+        recaptchaFailed() {},
     },
 };
 </script>
 
 <style scoped>
 .my-card {
-    margin-top: 8%;
+    margin-top: 5%;
 }
-
 </style>

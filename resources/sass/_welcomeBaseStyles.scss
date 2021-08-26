@@ -114,6 +114,22 @@ body {
         background: radial-gradient(circle, #35a2ff 0%, #014a88 100%);
     }
 
+}
+
+.footer {
+    width: 100%;
+    background: linear-gradient(to right, #3b3b3b, #1e1e1e, #1e1e1e, #3b3b3b);
+    color: rgb(225, 225, 225);
+    height: 40px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: flex-end;
+    margin-top: 20px;
+}
+
+
     // Material Icons
 
     @font-face {
@@ -138,17 +154,3 @@ body {
         direction: ltr;
         -webkit-font-smoothing: antialiased;
     }
-}
-
-.footer {
-    width: 100%;
-    background: linear-gradient(to right, #3b3b3b, #1e1e1e, #1e1e1e, #3b3b3b);
-    color: rgb(225, 225, 225);
-    height: 40px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    justify-self: flex-end;
-    margin-top: 20px;
-}

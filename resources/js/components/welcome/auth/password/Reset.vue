@@ -93,6 +93,24 @@
                         />
                     </q-card-section>
 
+                    
+                    <q-separator inset />
+
+                    <q-card-section>
+                        <recaptcha
+                            v-if="showRecaptcha"
+                            class="justify-content-center"
+                            siteKey="6LcVBCYcAAAAANyRP9722ZYtHWyRnNLUOk8iWFAc"
+                            size="normal"
+                            theme="light"
+                            :tabindex="0"
+                            @verify="recaptchaVerified"
+                            @expire="recaptchaExpired"
+                            @fail="recaptchaFailed"
+                            ref="recaptcha"
+                        />
+                    </q-card-section>
+
                     <q-separator inset />
 
                     <q-card-section>
@@ -101,6 +119,8 @@
                                 label="Enviar"
                                 type="submit"
                                 color="primary"
+                                name="enviar"
+                                :disabled="disable"
                             />
                             <q-btn
                                 label="Limpiar"
@@ -142,9 +162,6 @@ export default {
             },
         };
     },
-
-    props: ["token"],
-
     data() {
         return {
             route: location.pathname,
@@ -152,6 +169,8 @@ export default {
             showMessage: false,
             error: false,
             passwordError: false,
+              showRecaptcha: true,
+            disable: true,
         };
     },
 
@@ -200,7 +219,21 @@ export default {
         valid() {
             this.passwordError = false;
         },
+        // Recaptcha methods
+        recaptchaVerified(res) {
+            this.disable = false;
+        },
+        recaptchaExpired() {
+            this.$refs.recaptcha.reset();
+            this.disable = true;
+        },
+        recaptchaFailed() {},
     },
 };
 </script>
 
+<style scoped>
+.welcome-image {
+height: 130vh;
+}
+</style>

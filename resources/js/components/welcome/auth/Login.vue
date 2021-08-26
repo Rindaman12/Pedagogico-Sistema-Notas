@@ -106,8 +106,6 @@ export default {
         return {
             showRecaptcha: true,
             disable: true,
-
-            loading: false,
         };
     },
     setup() {
