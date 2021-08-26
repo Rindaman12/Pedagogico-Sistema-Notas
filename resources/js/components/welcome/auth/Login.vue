@@ -122,3 +122,10 @@ export default {
     },
 };
 </script>
+
+<style>
+.welcome-image {
+
+height: 85vh;
+}
+</style>

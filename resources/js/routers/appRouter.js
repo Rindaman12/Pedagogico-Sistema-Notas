@@ -5,7 +5,7 @@ import { createWebHistory, createRouter } from "vue-router";
 
 const routes = [
     {
-        path: '/inicio',
+        path: '/home',
         name: 'inicio',
         component: () => import('../components/app/Inicio.vue'),
         props: true

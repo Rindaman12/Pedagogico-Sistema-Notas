@@ -18,10 +18,11 @@
             </q-toolbar>
 
             <q-tabs align="left">
-                <q-route-tab to="/login" label="Iniciar Sesion" />
+                <q-route-tab to="/login" label="Iniciar Sesion" replace />
                 <q-route-tab
                     to="/password/reset"
                     label="Restablecer contraseña"
+                    replace
                 />
             </q-tabs>
         </q-header>
