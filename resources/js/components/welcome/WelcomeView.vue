@@ -1,7 +1,5 @@
 <template>
     <div class="welcome-image">
-        <div id="particles-js"></div>
-
         <div class="welcome">
             <img
                 class="welcome-img"

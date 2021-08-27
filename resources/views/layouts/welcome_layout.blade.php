@@ -27,8 +27,6 @@
     </main>   
     <!-- Scripts -->
     <script src="{{ asset('js/welcome.js') }}"></script>
-    <script src="{{asset('js/particulas.js')}}"></script>
-    <script src="{{asset('js/start.js')}}"></script>
 </body>
 
 
