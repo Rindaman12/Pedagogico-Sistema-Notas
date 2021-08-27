@@ -123,7 +123,7 @@ export default {
             axios
                 .post("/password/email", data)
                 .then((res) => {
-                    this.showAlert("success", res.data.message, "");
+                    this.showAlert("success", "Email Enviado", "");
                 })
                 .catch((err) => {
                     this.showAlert(

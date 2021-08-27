@@ -93,7 +93,6 @@
                         />
                     </q-card-section>
 
-                    
                     <q-separator inset />
 
                     <q-card-section>
@@ -162,6 +161,8 @@ export default {
             },
         };
     },
+    props: ["token"],
+
     data() {
         return {
             route: location.pathname,
@@ -169,7 +170,7 @@ export default {
             showMessage: false,
             error: false,
             passwordError: false,
-              showRecaptcha: true,
+            showRecaptcha: true,
             disable: true,
         };
     },
@@ -194,7 +195,7 @@ export default {
                     .then((res) => {
                         Swal.fire({
                             icon: "success",
-                            title: res.data.message,
+                            title: "Operacion Exitosa",
                             confirmButtonText: "Ok",
                         }).then((res) => {
                             location.pathname = `/home`;
@@ -234,6 +235,6 @@ export default {
 
 <style scoped>
 .welcome-image {
-height: 130vh;
+    height: 130vh;
 }
 </style>
