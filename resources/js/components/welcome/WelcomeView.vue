@@ -3,7 +3,7 @@
         <div class="welcome">
             <img
                 class="welcome-img"
-                src="/images/Upel.png"
+                src="/images/logoss.png"
                 alt="logo"
                 width=""
                 height=""
