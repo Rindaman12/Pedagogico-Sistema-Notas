@@ -17,9 +17,16 @@
                 </q-toolbar-title>
             </q-toolbar>
 
-            <q-tabs align="left">
+            <q-tabs v-if="!sessionStarted" align="left">
                 <q-route-tab to="/login" label="Iniciar Sesion" replace />
                 <q-route-tab
+                    to="/password/reset"
+                    label="Restablecer contraseña"
+                    replace
+                />
+            </q-tabs>
+                <q-tabs v-else align="left">
+                 <q-route-tab
                     to="/password/reset"
                     label="Restablecer contraseña"
                     replace
@@ -49,3 +56,23 @@
         </q-footer>
     </q-layout>
 </template>
+
+
+<script>
+
+export default {
+ 
+    props: ['session'],
+    data() {
+        return {
+            currSession : JSON.parse(this.session),
+        }
+    },
+    computed: {
+      sessionStarted() {
+        let session = JSON.parse(this.session) 
+        return session === null ? false : true
+      }
+    },
+}
+</script>
