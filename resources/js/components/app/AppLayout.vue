@@ -88,6 +88,7 @@
 
         <q-page-container>
             <router-view />
+            <particles-bg color="#014a88" type="square" :bg="true" />
         </q-page-container>
 
         <q-footer reveal elevated class="footer">
@@ -112,10 +113,12 @@
 <script>
 import Csfr from "./Csrf";
 import { ref } from "vue";
+import { ParticlesBg } from "particles-bg-vue";
 
 export default {
     components: {
         inputCsfr: Csfr,
+        ParticlesBg,
     },
     setup() {
         const rightDrawerOpen = ref(false);
