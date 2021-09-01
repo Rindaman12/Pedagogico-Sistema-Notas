@@ -20,14 +20,14 @@
                 />
             </q-toolbar>
 
-            <q-tabs v-if="user.tipo == 'estudiante'" align="left">
-                <q-route-tab to="/home" label="Inicio" />
-                <q-route-tab to="/inscripcion" label="Inscripcion" />
+            <q-tabs v-if="user.tipo === 'estudiante'" align="left">
+                <q-route-tab to="/estudiante/inicio" label="Inicio" replace/>
+                <q-route-tab to="/estudiante/inscripcion" label="Inscripcion" replace/>
             </q-tabs>
 
-            <q-tabs v-else-if="user.tipo == 'profesor'" align="left">
-                <q-route-tab to="/home" label="Inicio" />
-                <q-route-tab to="/nomina" label="Nomina" />
+            <q-tabs v-else-if="user.tipo === 'profesor'" align="left">
+                <q-route-tab to="/profesor/inicio" label="Inicio" replace/>
+                <q-route-tab to="/profesor/nomina" label="Nomina" replace/>
             </q-tabs>
         </q-header>
 

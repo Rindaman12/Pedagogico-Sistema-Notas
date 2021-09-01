@@ -4,7 +4,7 @@ require('./bootstrap');
 
 import { createApp, defineAsyncComponent } from 'vue';
 import { Quasar } from 'quasar'
-import router from './routers/appRouter.js';
+import router from './routers/profesorRouter.js';
 
 // se importan los componentes
 

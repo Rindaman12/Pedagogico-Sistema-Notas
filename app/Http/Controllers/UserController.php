@@ -6,7 +6,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-
 class UserController extends Controller
 {
     /**
@@ -21,6 +20,17 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function index()
+    {
+        //Muestra al usuario seleccionado en el dashboard
+
+        $user = Auth::user();
+
+        if ($user->tipo === 'estudiante') {
+            return view('estudiante.inicio');
+        }
+    }
 
     public function findUser()
     {

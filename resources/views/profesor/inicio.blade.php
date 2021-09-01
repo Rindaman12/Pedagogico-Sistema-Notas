@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app_profesor')
 
 @section('main')
     <app-layout 

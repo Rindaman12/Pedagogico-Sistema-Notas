@@ -15,4 +15,16 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/find/user',[UserController::class, 'findUser'])->middleware('auth');
+
+Route::group(['middleware' => 'auth'], function () {
+
+    Route::get('estudiante/inicio', function () {
+        return view('estudiante.inicio');
+    });
+
+    Route::get('profesor/inicio', function () {
+        return view('profesor.inicio');
+    });
+
+    Route::get('/find/user', [UserController::class, 'findUser']);
+});

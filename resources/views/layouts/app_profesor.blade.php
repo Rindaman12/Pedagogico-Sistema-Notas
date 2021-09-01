@@ -26,7 +26,7 @@
         @show 
     </main>   
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/profesor.js') }}"></script>
 
 </body>
 

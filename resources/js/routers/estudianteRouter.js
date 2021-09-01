@@ -9,7 +9,7 @@ const routes = [
     //Inicio
 
     {
-        path: '/home',
+        path: '/estudiante/inicio',
         name: 'inicio',
         component: () => import('../components/app/Inicio.vue'),
         props: true
@@ -18,18 +18,9 @@ const routes = [
     //Rutas Estudiante
 
     {
-        path: "/inscripcion",
+        path: "/estudiante/inscripcion",
         name: "inscripcion",
         component: () => import("../components/estudiante/Inscripcion.vue"),
-        props: true,
-    },
-
-    //Rutas Profesor
-
-    {
-        path: "/nomina",
-        name: "nomina",
-        component: () => import("../components/profesor/NominaCursos.vue"),
         props: true,
     },
     
