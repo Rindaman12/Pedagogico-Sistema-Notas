@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,18 +15,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-//Archivo de rutas de Auth
-
-Route::group([], __DIR__ . '/auth.php');
-
-//Archivo de rutas de app
-
-Route::group([], __DIR__ . '/app.php');
-
-//Archivo de rutas de user
-
-Route::group([], __DIR__ . '/user.php');
+Route::get('/find/user',[UserController::class, 'findUser'])->middleware('auth');

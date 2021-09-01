@@ -20,8 +20,14 @@
                 />
             </q-toolbar>
 
-            <q-tabs align="left">
-                <q-route-tab to="/page1" label="Inicio" />
+            <q-tabs v-if="user.tipo == 'estudiante'" align="left">
+                <q-route-tab to="/home" label="Inicio" />
+                <q-route-tab to="/inscripcion" label="Inscripcion" />
+            </q-tabs>
+
+            <q-tabs v-else-if="user.tipo == 'profesor'" align="left">
+                <q-route-tab to="/home" label="Inicio" />
+                <q-route-tab to="/nomina" label="Nomina" />
             </q-tabs>
         </q-header>
 
@@ -80,8 +86,10 @@
                     <q-avatar size="56px" class="q-mb-sm">
                         <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
                     </q-avatar>
-                    <div class="text-weight-bold">Nombre apellido</div>
-                    <div>@usuario</div>
+                    <div class="text-weight-bold">
+                        {{ user.nombre_usuario }} {{ user.apellido_usuario }}
+                    </div>
+                    <div>@{{ user.usuario }}</div>
                 </div>
             </q-img>
         </q-drawer>
@@ -120,6 +128,15 @@ export default {
         inputCsfr: Csfr,
         ParticlesBg,
     },
+    data() {
+        return {
+            user: [],
+        };
+    },
+    mounted() {
+        // Simple GET request using axios
+        this.getUser();
+    },
     setup() {
         const rightDrawerOpen = ref(false);
 
@@ -134,6 +151,12 @@ export default {
         logout() {
             document.getElementById("logout-form").submit();
             localStorage.tabs = "[]";
+        },
+        getUser: function () {
+            var url = "/find/user";
+            axios.get(url).then((response) => {
+                this.user = response.data;
+            });
         },
     },
 };
