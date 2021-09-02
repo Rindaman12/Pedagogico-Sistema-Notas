@@ -20,14 +20,18 @@
                 />
             </q-toolbar>
 
-            <q-tabs v-if="user.tipo === 'estudiante'" align="left">
-                <q-route-tab to="/estudiante/inicio" label="Inicio" replace/>
-                <q-route-tab to="/estudiante/inscripcion" label="Inscripcion" replace/>
+            <q-tabs v-if="userTipo === 'estudiante'" align="left">
+                <q-route-tab to="/estudiante/inicio" label="Inicio" replace />
+                <q-route-tab
+                    to="/estudiante/inscripcion"
+                    label="Inscripcion"
+                    replace
+                />
             </q-tabs>
 
-            <q-tabs v-else-if="user.tipo === 'profesor'" align="left">
-                <q-route-tab to="/profesor/inicio" label="Inicio" replace/>
-                <q-route-tab to="/profesor/nomina" label="Nomina" replace/>
+            <q-tabs v-else-if="userTipo === 'profesor'" align="left">
+                <q-route-tab to="/profesor/inicio" label="Inicio" replace />
+                <q-route-tab to="/profesor/nomina" label="Nomina" replace />
             </q-tabs>
         </q-header>
 
@@ -87,9 +91,9 @@
                         <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
                     </q-avatar>
                     <div class="text-weight-bold">
-                        {{ user.nombre_usuario }} {{ user.apellido_usuario }}
+                        {{ userNombre }} {{ userApellido }}
                     </div>
-                    <div>@{{ user.usuario }}</div>
+                    <div>@{{ userUser }}</div>
                 </div>
             </q-img>
         </q-drawer>
@@ -128,14 +132,35 @@ export default {
         inputCsfr: Csfr,
         ParticlesBg,
     },
+    props: {
+        userUser: {
+            type: String,
+            required: true,
+        },
+        userTipo: {
+            type: String,
+            required: true,
+        },
+        userNombre: {
+            type: String,
+            required: true,
+        },
+        userApellido: {
+            type: String,
+            required: true,
+        },
+        userId: {
+            type: Number,
+            required: true,
+        },
+    },
     data() {
         return {
-            user: [],
+            user: this.userId,
         };
     },
-    mounted() {
-        // Simple GET request using axios
-        this.getUser();
+    created() {
+        sessionStorage.userId = this.userId;
     },
     setup() {
         const rightDrawerOpen = ref(false);
@@ -151,12 +176,6 @@ export default {
         logout() {
             document.getElementById("logout-form").submit();
             localStorage.tabs = "[]";
-        },
-        getUser: function () {
-            var url = "/find/user";
-            axios.get(url).then((response) => {
-                this.user = response.data;
-            });
         },
     },
 };
