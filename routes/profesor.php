@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfesorController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,26 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+Route::group(['middleware' => 'auth'], function () {
+
+    Route::get('profesor/inicio', [ProfesorController::class, 'index']);
 });
-
-//Archivo de rutas de Auth
-
-Route::group([], __DIR__ . '/auth.php');
-
-//Archivo de rutas de app
-
-Route::group([], __DIR__ . '/app.php');
-
-//Archivo de rutas de user
-
-Route::group([], __DIR__ . '/user.php');
-
-//Archivo de rutas de estudiante
-
-Route::group([], __DIR__ . '/estudiante.php');
-
-//Archivo de rutas de profesor
-
-Route::group([], __DIR__ . '/profesor.php');
