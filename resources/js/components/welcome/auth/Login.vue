@@ -1,6 +1,5 @@
 <template>
     <div class="welcome-image">
-
         <div class="q-pa-md row items-start q-gutter-md">
             <q-card class="my-card text-white">
                 <q-form
@@ -89,8 +88,7 @@
                 </q-form>
             </q-card>
         </div>
-                </div>
-
+    </div>
 </template>
 
 <script>
@@ -106,6 +104,7 @@ export default {
         return {
             showRecaptcha: true,
             disable: true,
+            user: [],
         };
     },
     setup() {
@@ -142,7 +141,7 @@ export default {
                         "Inicio De Sesion",
                         "Logueado Exitosamente"
                     );
-                    location.href = "/home";
+                    this.getUser();
                 })
                 .catch((err) => {
                     this.showAlert(
@@ -151,6 +150,18 @@ export default {
                         "Revise Los Datos Por Favor."
                     );
                 });
+        },
+        getUser: function () {
+            var url = "/find/user";
+            axios.get(url).then((response) => {
+                this.user = response.data;
+
+                if (this.user.tipo === "estudiante") {
+                    location.href = "estudiante/inicio";
+                } else if (this.user.tipo === "profesor") {
+                    location.href = "profesor/inicio";
+                }
+            });
         },
 
         // Recaptcha methods
@@ -165,4 +176,3 @@ export default {
     },
 };
 </script>
-
