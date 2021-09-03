@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EstudianteController;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,16 @@ use App\Http\Controllers\EstudianteController;
 
 
 Route::group(['middleware' => 'auth'], function () {
-
     Route::get('estudiante/inicio', [EstudianteController::class, 'index']);
+
+    Route::get('estudiante/inscripcion', function () {
+        $user = Auth::user();
+
+        if ($user->tipo == 'estudiante') {
+            return view('estudiante.inscripcion');
+        } else {
+            Session::flush();
+            return redirect()->route('login');
+        }
+    })->name('estudiante.inscripcion');
 });
