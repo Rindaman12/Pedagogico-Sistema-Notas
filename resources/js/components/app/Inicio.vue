@@ -1,64 +1,32 @@
 <template>
     <div class="welcome-image">
         <div class="q-pa-md row items-start q-gutter-md">
-            <q-card class="my-card text-white">
-                <q-form
-                    @submit.prevent="login"
-                    @reset="onReset"
-                    class="q-gutter-md"
-                >
-                    <q-card-section class="header">
-                        <div class="text-h6" color="white">Inicio</div>
-                    </q-card-section>
-                </q-form>
+            <q-card class="my-card">
+                <q-card-section class="q-pt-none">
+                    <q-img
+                        src="https://lanacionweb.com//fotoedicion/2019/07/upell-1.jpg"
+                        alt="imagen_inicio"
+                    />
+                </q-card-section>
+
+                <q-separator inset />
+
+                <q-card-section class="message">
+                    Bienvenido a la nueva WebApp de la UPEL!
+                </q-card-section>
             </q-card>
         </div>
     </div>
 </template>
 
-<script>
-import { useQuasar } from "quasar";
-import { ref } from "vue";
+<style scoped>
+.message {
+    font-size: large;
+    font-weight: bold;
+}
 
-export default {
-    setup() {
-        const $q = useQuasar();
-
-        const usuario = ref(null);
-        const password = ref(null);
-
-        return {
-            usuario,
-            password,
-
-            onReset() {
-                usuario.value = null;
-                password.value = null;
-            },
-        };
-    },
-    methods: {
-        login(e) {
-            let data = Object.fromEntries(new FormData(e.target));
-            axios
-                .post("/login", data)
-                .then((res) => {
-                    $q.notify({
-                        color: "green-4",
-                        textColor: "white",
-                        icon: "cloud_done",
-                        message: "Logueado Exitosamente",
-                    });
-                })
-                .catch((err) => {
-                    $q.notify({
-                        color: "red-4",
-                        textColor: "white",
-                        icon: "cloud_done",
-                        message: "Error, Revise Los Datos Por Favor.",
-                    });
-                });
-        },
-    },
-};
-</script>
+.my-card {
+    border-radius: 15px;
+    overflow: hidden;
+}
+</style>
