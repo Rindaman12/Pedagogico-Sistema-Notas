@@ -25,8 +25,8 @@
                     replace
                 />
             </q-tabs>
-                <q-tabs v-else align="left">
-                 <q-route-tab
+            <q-tabs v-else align="left">
+                <q-route-tab
                     to="/password/reset"
                     label="Restablecer contraseña"
                     replace
@@ -35,7 +35,11 @@
         </q-header>
 
         <q-page-container>
-            <router-view />
+            <router-view v-slot="{ Component }">
+                <transition name="fade" mode="out-in">
+                    <component :is="Component" />
+                </transition>
+            </router-view>
         </q-page-container>
 
         <q-footer reveal elevated class="footer">
@@ -57,22 +61,32 @@
     </q-layout>
 </template>
 
-
 <script>
-
 export default {
- 
-    props: ['session'],
+    props: ["session"],
     data() {
         return {
-            currSession : JSON.parse(this.session),
-        }
+            currSession: JSON.parse(this.session),
+        };
     },
     computed: {
-      sessionStarted() {
-        let session = JSON.parse(this.session) 
-        return session === null ? false : true
-      }
+        sessionStarted() {
+            let session = JSON.parse(this.session);
+            return session === null ? false : true;
+        },
     },
-}
+};
 </script>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>

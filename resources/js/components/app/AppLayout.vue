@@ -62,7 +62,7 @@
                     label="Listados"
                     replace
                 />
-                
+
                 <q-route-tab to="/coordinador/record" label="Record" replace />
             </q-tabs>
         </q-header>
@@ -123,7 +123,11 @@
         </q-drawer>
 
         <q-page-container>
-            <router-view />
+            <router-view v-slot="{ Component }">
+                <transition name="slide">
+                    <component :is="Component" />
+                </transition>
+            </router-view>
             <particles-bg color="#014a88" type="square" :bg="true" />
         </q-page-container>
 
@@ -205,9 +209,34 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .link {
     text-decoration: none;
     color: black;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+    transition: all 0.75s ease-out;
+}
+
+.slide-enter-to {
+    position: absolute;
+    right: 0;
+}
+
+.slide-enter-from {
+    position: absolute;
+    right: -100%;
+}
+
+.slide-leave-to {
+    position: absolute;
+    left: -100%;
+}
+
+.slide-leave-from {
+    position: absolute;
+    left: 0;
 }
 </style>
