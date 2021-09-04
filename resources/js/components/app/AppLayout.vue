@@ -47,6 +47,8 @@
             <q-tabs v-else-if="userTipo === 'profesor'" align="left">
                 <q-route-tab to="/profesor/inicio" label="Inicio" replace />
                 <q-route-tab to="/profesor/nomina" label="Nomina" replace />
+                <q-route-tab to="/profesor/carganotas" label="Carga De Notas" replace />
+
             </q-tabs>
         </q-header>
 

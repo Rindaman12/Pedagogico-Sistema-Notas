@@ -15,12 +15,19 @@ const routes = [
         props: true
     },
 
-    //Rutas Estudiante
+    //Rutas Profesor
 
     {
         path: "/profesor/nomina",
         name: "nomina",
         component: () => import("../components/profesor/NominaCursos.vue"),
+        props: true,
+    },
+
+    {
+        path: "/profesor/carganotas",
+        name: "carga_notas",
+        component: () => import("../components/profesor/CargaNotas.vue"),
         props: true,
     },
     
