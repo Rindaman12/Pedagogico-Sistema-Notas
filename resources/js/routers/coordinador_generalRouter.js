@@ -9,32 +9,30 @@ const routes = [
     //Inicio
 
     {
-        path: '/coordinador/inicio',
+        path: '/coordinador_general/inicio',
         name: 'inicio',
         component: () => import('../components/app/Inicio.vue'),
         props: true
     },
 
-    //Rutas Estudiante
+    //Rutas Coordinador General
 
     {
-        path: "/coordinador/constancia/incepcion",
-        name: "constancia_incepcion",
-        component: () => import("../components/coordinador/ConstanciaIncepcion.vue"),
+        path: "/coordinador_general/constancia/inscripcion",
+        name: "constancia_inscripcion",
+        component: () => import("../components/app/ConstanciaInscripcion.vue"),
         props: true,
     },
 
-
     {
-        path: "/coordinador/listados",
+        path: "/coordinador_general/listados",
         name: "listados",
         component: () => import("../components/app/Listados.vue"),
         props: true,
     },
 
-
     {
-        path: "/coordinador/record",
+        path: "/coordinador_general/record",
         name: "record",
         component: () => import("../components/app/Record.vue"),
         props: true,

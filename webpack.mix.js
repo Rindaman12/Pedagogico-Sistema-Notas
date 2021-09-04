@@ -17,6 +17,7 @@ const mix = require('laravel-mix');
      .js('resources/js/estudiante.js', 'public/js')
      .js('resources/js/profesor.js', 'public/js')
      .js('resources/js/coordinador.js', 'public/js')
+     .js('resources/js/coordinador_general.js', 'public/js')
      .js('resources/js/welcome.js', 'public/js')
  
  // Styles

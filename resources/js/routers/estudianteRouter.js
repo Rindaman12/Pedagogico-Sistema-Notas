@@ -28,7 +28,7 @@ const routes = [
     {
         path: "/estudiante/constancia/inscripcion",
         name: "constancia_inscripcion",
-        component: () => import("../components/estudiante/ConstanciaInscripcion.vue"),
+        component: () => import("../components/app/ConstanciaInscripcion.vue"),
         props: true,
     },
 

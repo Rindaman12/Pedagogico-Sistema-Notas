@@ -39,4 +39,8 @@ Route::group([], __DIR__ . '/profesor.php');
 
 //Archivo de rutas de coordinador
 
-Route::group([], __DIR__ . '/coordinador.php');
+Route::group([], __DIR__ . '/coordinadores/coordinador.php');
+
+//Archivo de rutas de coordinador general
+
+Route::group([], __DIR__ . '/coordinadores/coordinador_general.php');

@@ -3,23 +3,15 @@
         <div class="q-pa-md row items-start q-gutter-md">
             <q-card v-if="user.tipo === 'estudiante'" class="my-card text-white">
                 <q-card-section class="header">
-                    <div class="text-h6" color="white">Record Estudiante</div>
+                    <div class="text-h6" color="white">Constancia Inscripcion Estudiante</div>
                 </q-card-section>
             </q-card>
             <q-card
-                v-else-if="user.tipo === 'coordinador'"
-                class="my-card text-white"
-            >
-                <q-card-section class="header">
-                    <div class="text-h6" color="white">Record Coordinador</div>
-                </q-card-section>
-            </q-card>
-               <q-card
                 v-else-if="user.tipo === 'coordinador_general'"
                 class="my-card text-white"
             >
                 <q-card-section class="header">
-                    <div class="text-h6" color="white">Record Coordinador General</div>
+                    <div class="text-h6" color="white">Constancia Inscripcion Coordinador</div>
                 </q-card-section>
             </q-card>
         </div>

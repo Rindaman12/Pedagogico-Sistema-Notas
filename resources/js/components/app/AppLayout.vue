@@ -65,6 +65,21 @@
 
                 <q-route-tab to="/coordinador/record" label="Record" replace />
             </q-tabs>
+                <q-tabs v-else-if="userTipo === 'coordinador_general'" align="left">
+                <q-route-tab to="/coordinador_general/inicio" label="Inicio" replace />
+                <q-route-tab
+                    to="/coordinador_general/constancia/inscripcion"
+                    label="Constancia de Inscripcion"
+                    replace
+                />
+                <q-route-tab
+                    to="/coordinador_general/listados"
+                    label="Listados"
+                    replace
+                />
+
+                <q-route-tab to="/coordinador_general/record" label="Record" replace />
+            </q-tabs>
         </q-header>
 
         <q-drawer show-if-above v-model="rightDrawerOpen" side="left" bordered>
