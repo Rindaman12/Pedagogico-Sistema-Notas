@@ -36,3 +36,7 @@ Route::group([], __DIR__ . '/estudiante.php');
 //Archivo de rutas de profesor
 
 Route::group([], __DIR__ . '/profesor.php');
+
+//Archivo de rutas de coordinador
+
+Route::group([], __DIR__ . '/coordinador.php');

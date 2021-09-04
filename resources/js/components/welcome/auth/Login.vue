@@ -160,6 +160,8 @@ export default {
                     location.href = "estudiante/inicio";
                 } else if (this.user.tipo === "profesor") {
                     location.href = "profesor/inicio";
+                } else if (this.user.tipo === "coordinador") {
+                    location.href = "coordinador/inicio";
                 }
             });
         },

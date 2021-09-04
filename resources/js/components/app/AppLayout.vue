@@ -27,28 +27,43 @@
                     label="Inscripcion"
                     replace
                 />
-                 <q-route-tab
+                <q-route-tab
                     to="/estudiante/constancia/inscripcion"
                     label="Constancia de Inscripcion"
                     replace
                 />
-                 <q-route-tab
+                <q-route-tab
                     to="/estudiante/constancia/estudio"
                     label="Constancia de Estudio"
                     replace
                 />
-                 <q-route-tab
-                    to="/estudiante/record"
-                    label="Record"
-                    replace
-                />
+                <q-route-tab to="/estudiante/record" label="Record" replace />
             </q-tabs>
 
             <q-tabs v-else-if="userTipo === 'profesor'" align="left">
                 <q-route-tab to="/profesor/inicio" label="Inicio" replace />
                 <q-route-tab to="/profesor/nomina" label="Nomina" replace />
-                <q-route-tab to="/profesor/carganotas" label="Carga De Notas" replace />
+                <q-route-tab
+                    to="/profesor/carganotas"
+                    label="Carga De Notas"
+                    replace
+                />
+            </q-tabs>
 
+            <q-tabs v-else-if="userTipo === 'coordinador'" align="left">
+                <q-route-tab to="/coordinador/inicio" label="Inicio" replace />
+                <q-route-tab
+                    to="/coordinador/constancia/incepcion"
+                    label="Constancia de Incepcion"
+                    replace
+                />
+                <q-route-tab
+                    to="/coordinador/listados"
+                    label="Listados"
+                    replace
+                />
+                
+                <q-route-tab to="/coordinador/record" label="Record" replace />
             </q-tabs>
         </q-header>
 
@@ -61,7 +76,6 @@
                 "
             >
                 <q-list padding>
-                   
                     <q-item active clickable v-ripple>
                         <q-item-section avatar>
                             <q-icon

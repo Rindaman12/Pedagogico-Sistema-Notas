@@ -16,6 +16,7 @@ const mix = require('laravel-mix');
  // Vue instances
      .js('resources/js/estudiante.js', 'public/js')
      .js('resources/js/profesor.js', 'public/js')
+     .js('resources/js/coordinador.js', 'public/js')
      .js('resources/js/welcome.js', 'public/js')
  
  // Styles
