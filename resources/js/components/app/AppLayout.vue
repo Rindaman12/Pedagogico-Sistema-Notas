@@ -27,6 +27,21 @@
                     label="Inscripcion"
                     replace
                 />
+                 <q-route-tab
+                    to="/estudiante/constancia/inscripcion"
+                    label="Constancia de Inscripcion"
+                    replace
+                />
+                 <q-route-tab
+                    to="/estudiante/constancia/estudio"
+                    label="Constancia de Estudio"
+                    replace
+                />
+                 <q-route-tab
+                    to="/estudiante/record"
+                    label="Record"
+                    replace
+                />
             </q-tabs>
 
             <q-tabs v-else-if="userTipo === 'profesor'" align="left">
@@ -44,14 +59,7 @@
                 "
             >
                 <q-list padding>
-                    <q-item clickable v-ripple>
-                        <q-item-section avatar>
-                            <q-icon name="home" />
-                        </q-item-section>
-
-                        <q-item-section> Inicio </q-item-section>
-                    </q-item>
-
+                   
                     <q-item active clickable v-ripple>
                         <q-item-section avatar>
                             <q-icon

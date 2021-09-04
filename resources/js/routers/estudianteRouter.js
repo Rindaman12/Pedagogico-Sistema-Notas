@@ -23,6 +23,30 @@ const routes = [
         component: () => import("../components/estudiante/Inscripcion.vue"),
         props: true,
     },
+
+
+    {
+        path: "/estudiante/constancia/inscripcion",
+        name: "constancia_inscripcion",
+        component: () => import("../components/estudiante/ConstanciaInscripcion.vue"),
+        props: true,
+    },
+
+
+    {
+        path: "/estudiante/constancia/estudio",
+        name: "constancia_estudio",
+        component: () => import("../components/estudiante/ConstanciaEstudio.vue"),
+        props: true,
+    },
+
+
+    {
+        path: "/estudiante/record",
+        name: "record",
+        component: () => import("../components/estudiante/Record.vue"),
+        props: true,
+    },
     
 ]
 
