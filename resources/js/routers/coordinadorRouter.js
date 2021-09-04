@@ -36,7 +36,7 @@ const routes = [
     {
         path: "/coordinador/record",
         name: "record",
-        component: () => import("../components/coordinador/Record.vue"),
+        component: () => import("../components/app/Record.vue"),
         props: true,
     },
     

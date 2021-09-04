@@ -44,7 +44,7 @@ const routes = [
     {
         path: "/estudiante/record",
         name: "record",
-        component: () => import("../components/estudiante/Record.vue"),
+        component: () => import("../components/app/Record.vue"),
         props: true,
     },
     
