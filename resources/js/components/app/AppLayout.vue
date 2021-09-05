@@ -65,8 +65,12 @@
 
                 <q-route-tab to="/coordinador/record" label="Record" replace />
             </q-tabs>
-                <q-tabs v-else-if="userTipo === 'coordinador_general'" align="left">
-                <q-route-tab to="/coordinador_general/inicio" label="Inicio" replace />
+            <q-tabs v-else-if="userTipo === 'coordinador_general'" align="left">
+                <q-route-tab
+                    to="/coordinador_general/inicio"
+                    label="Inicio"
+                    replace
+                />
                 <q-route-tab
                     to="/coordinador_general/constancia/inscripcion"
                     label="Constancia de Inscripcion"
@@ -78,7 +82,29 @@
                     replace
                 />
 
-                <q-route-tab to="/coordinador_general/record" label="Record" replace />
+                <q-route-tab
+                    to="/coordinador_general/record"
+                    label="Record"
+                    replace
+                />
+            </q-tabs>
+
+            <q-tabs v-else-if="userTipo === 'secretaria'" align="left">
+                <q-route-tab
+                    to="/secretaria/inicio"
+                    label="Inicio"
+                    replace
+                />
+                <q-route-tab
+                    to="/secretaria/carga_oferta/"
+                    label="Carga De Oferta"
+                    replace
+                />
+                <q-route-tab
+                    to="/secretaria/listados"
+                    label="Listados"
+                    replace
+                />
             </q-tabs>
         </q-header>
 

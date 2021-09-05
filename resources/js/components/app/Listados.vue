@@ -14,6 +14,14 @@
                     <div class="text-h6" color="white">Listados Coordinador General</div>
                 </q-card-section>
             </q-card>
+            <q-card
+                v-else-if="user.tipo === 'secretaria'"
+                class="my-card text-white"
+            >
+                <q-card-section class="header">
+                    <div class="text-h6" color="white">Listados Secretaria</div>
+                </q-card-section>
+            </q-card>
         </div>
     </div>
 </template>
