@@ -166,6 +166,8 @@ export default {
                     location.href = "coordinador_general/inicio";
                 } else if (this.user.tipo === "secretaria") {
                     location.href = "secretaria/inicio";
+                }else if (this.user.tipo === "subdireccion") {
+                    location.href = "subdireccion/inicio";
                 }
             });
         },

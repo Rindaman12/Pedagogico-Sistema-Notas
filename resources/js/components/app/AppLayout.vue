@@ -90,11 +90,7 @@
             </q-tabs>
 
             <q-tabs v-else-if="userTipo === 'secretaria'" align="left">
-                <q-route-tab
-                    to="/secretaria/inicio"
-                    label="Inicio"
-                    replace
-                />
+                <q-route-tab to="/secretaria/inicio" label="Inicio" replace />
                 <q-route-tab
                     to="/secretaria/carga_oferta/"
                     label="Carga De Oferta"
@@ -102,6 +98,15 @@
                 />
                 <q-route-tab
                     to="/secretaria/listados"
+                    label="Listados"
+                    replace
+                />
+            </q-tabs>
+            <q-tabs v-else-if="userTipo === 'subdireccion'" align="left">
+                <q-route-tab to="/subdireccion/inicio" label="Inicio" replace />
+
+                <q-route-tab
+                    to="/subdireccion/listados"
                     label="Listados"
                     replace
                 />

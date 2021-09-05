@@ -19,6 +19,7 @@ const mix = require('laravel-mix');
      .js('resources/js/coordinador.js', 'public/js')
      .js('resources/js/coordinador_general.js', 'public/js')
      .js('resources/js/secretaria.js', 'public/js')
+     .js('resources/js/subdireccion.js', 'public/js')
      .js('resources/js/welcome.js', 'public/js')
  
  // Styles
