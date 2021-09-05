@@ -21,47 +21,14 @@ use Illuminate\Support\Facades\Session;
 Route::group(['middleware' => 'auth'], function () {
     Route::get('estudiante/inicio', [EstudianteController::class, 'index']);
 
-    Route::get('estudiante/inscripcion', function () {
-        $user = Auth::user();
+    Route::get('estudiante/inscripcion', [EstudianteController::class, 'index']);
 
-        if ($user->tipo == 'estudiante') {
-            return view('estudiante.inscripcion');
-        } else {
-            Session::flush();
-            return redirect()->route('login');
-        }
-    })->name('estudiante.inscripcion');
 
-    Route::get('/estudiante/constancia/inscripcion', function () {
-        $user = Auth::user();
+    Route::get('/estudiante/constancia/inscripcion', [EstudianteController::class, 'index']);
 
-        if ($user->tipo == 'estudiante') {
-            return view('estudiante.constancia_inscripcion');
-        } else {
-            Session::flush();
-            return redirect()->route('login');
-        }
-    })->name('estudiante.constancia_inscripcion');
 
-    Route::get('/estudiante/constancia/estudio', function () {
-        $user = Auth::user();
+    Route::get('/estudiante/constancia/estudio', [EstudianteController::class, 'index']);
 
-        if ($user->tipo == 'estudiante') {
-            return view('estudiante.constancia_estudio');
-        } else {
-            Session::flush();
-            return redirect()->route('login');
-        }
-    })->name('estudiante.constancia_estudio');
 
-    Route::get('/estudiante/record', function () {
-        $user = Auth::user();
-
-        if ($user->tipo == 'estudiante') {
-            return view('estudiante.record');
-        } else {
-            Session::flush();
-            return redirect()->route('login');
-        }
-    })->name('estudiante.record');
+    Route::get('/estudiante/record', [EstudianteController::class, 'index']);
 });
