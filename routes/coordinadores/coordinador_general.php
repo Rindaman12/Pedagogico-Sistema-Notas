@@ -21,36 +21,9 @@ use Illuminate\Support\Facades\Session;
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/coordinador_general/inicio', [CoordinadorGeneralController::class, 'index']);
 
-    Route::get('/coordinador_general/constancia/inscripcion', function () {
-        $user = Auth::user();
+    Route::get('/coordinador_general/constancia/inscripcion', [CoordinadorGeneralController::class, 'index']);
 
-        if ($user->tipo == 'coordinador_general') {
-            return view('coordinador.coordinador_general.constancia_inscripcion');
-        } else {
-            Session::flush();
-            return redirect()->route('login');
-        }
-    })->name('coordinador.coordinador_general.constancia_inscripcion');
+    Route::get('/coordinador_general/listados', [CoordinadorGeneralController::class, 'index']);
 
-    Route::get('/coordinador_general/listados', function () {
-        $user = Auth::user();
-
-        if ($user->tipo == 'coordinador_general') {
-            return view('coordinador.coordinador_general.listados');
-        } else {
-            Session::flush();
-            return redirect()->route('login');
-        }
-    })->name('coordinador.coordinador_general.listados');
-
-    Route::get('/coordinador_general/record', function () {
-        $user = Auth::user();
-
-        if ($user->tipo == 'coordinador_general') {
-            return view('coordinador.coordinador_general.record');
-        } else {
-            Session::flush();
-            return redirect()->route('login');
-        }
-    })->name('coordinador.coordinador_general.record');
+    Route::get('/coordinador_general/record', [CoordinadorGeneralController::class, 'index']);
 });
