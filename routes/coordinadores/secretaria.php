@@ -21,25 +21,7 @@ use Illuminate\Support\Facades\Session;
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/secretaria/inicio', [SecretariaController::class, 'index']);
 
-    Route::get('/secretaria/carga_oferta/', function () {
-        $user = Auth::user();
+    Route::get('/secretaria/carga_oferta/', [SecretariaController::class, 'index']);
 
-        if ($user->tipo == 'secretaria') {
-            return view('coordinador.secretaria.carga_oferta');
-        } else {
-            Session::flush();
-            return redirect()->route('login');
-        }
-    })->name('coordinador.secretaria.carga_oferta');
-
-    Route::get('/secretaria/listados', function () {
-        $user = Auth::user();
-
-        if ($user->tipo == 'secretaria') {
-            return view('coordinador.secretaria.listados');
-        } else {
-            Session::flush();
-            return redirect()->route('login');
-        }
-    })->name('coordinador.secretaria.listados');
+    Route::get('/secretaria/listados', [SecretariaController::class, 'index']);
 });
