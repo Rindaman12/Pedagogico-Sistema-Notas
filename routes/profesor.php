@@ -21,25 +21,8 @@ use Illuminate\Support\Facades\Session;
 Route::group(['middleware' => 'auth'], function () {
     Route::get('profesor/inicio', [ProfesorController::class, 'index']);
 
-    Route::get('/profesor/nomina', function () {
-        $user = Auth::user();
+    Route::get('/profesor/nomina', [ProfesorController::class, 'index']);
 
-        if ($user->tipo == 'profesor') {
-            return view('profesor.nomina');
-        } else {
-            Session::flush();
-            return redirect()->route('login');
-        }
-    })->name('profesor.nomina');
 
-    Route::get('/profesor/carganotas', function () {
-        $user = Auth::user();
-
-        if ($user->tipo == 'profesor') {
-            return view('profesor.carga_notas');
-        } else {
-            Session::flush();
-            return redirect()->route('login');
-        }
-    })->name('profesor.carga_notas');
+    Route::get('/profesor/carganotas', [ProfesorController::class, 'index']);
 });
