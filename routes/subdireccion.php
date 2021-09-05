@@ -21,14 +21,5 @@ use Illuminate\Support\Facades\Session;
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/subdireccion/inicio', [SubdireccionController::class, 'index']);
 
-    Route::get('/subdireccion/listados', function () {
-        $user = Auth::user();
-
-        if ($user->tipo == 'subdireccion') {
-            return view('subdireccion.listados');
-        } else {
-            Session::flush();
-            return redirect()->route('login');
-        }
-    })->name('subdireccion.listados');
+    Route::get('/subdireccion/listados', [SubdireccionController::class, 'index']);
 });
