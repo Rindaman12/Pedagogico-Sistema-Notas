@@ -1,41 +1,20 @@
 <template>
     <div class="welcome-image">
         <div class="q-pa-md row items-start q-gutter-md">
-            <q-card v-if="user.tipo === 'estudiante'" class="my-card text-white">
-                <q-card-section class="header">
-                    <div class="text-h6" color="white">Record Estudiante</div>
-                </q-card-section>
-            </q-card>
             <q-card
-                v-else-if="user.tipo === 'coordinador'"
+                v-if="user.tipo === 'analista'"
                 class="my-card text-white"
             >
                 <q-card-section class="header">
-                    <div class="text-h6" color="white">Record Coordinador</div>
+                    <div class="text-h6" color="white">Inscripcion (Analista)</div>
                 </q-card-section>
             </q-card>
-               <q-card
-                v-else-if="user.tipo === 'coordinador_general'"
-                class="my-card text-white"
-            >
-                <q-card-section class="header">
-                    <div class="text-h6" color="white">Record Coordinador General</div>
-                </q-card-section>
-            </q-card>
-                        <q-card
-                v-else-if="user.tipo === 'analista'"
-                class="my-card text-white"
-            >
-                <q-card-section class="header">
-                    <div class="text-h6" color="white">Record Analista</div>
-                </q-card-section>
-            </q-card>
-              <q-card
+             <q-card
                 v-else-if="user.tipo === 'jefe_control'"
                 class="my-card text-white"
             >
                 <q-card-section class="header">
-                    <div class="text-h6" color="white">Record Jefe Control</div>
+                    <div class="text-h6" color="white">Inscripcion (Jefe Estudio)</div>
                 </q-card-section>
             </q-card>
         </div>

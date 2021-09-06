@@ -111,6 +111,90 @@
                     replace
                 />
             </q-tabs>
+            <q-tabs v-else-if="userTipo === 'analista'" align="left">
+                <q-route-tab to="/analista/inicio" label="Inicio" replace />
+
+                <q-route-tab
+                    to="/analista/CMDatosPersonales"
+                    label="Carga y Modificacion de Datos Personales"
+                    replace
+                />
+
+                <q-route-tab
+                    to="/analista/carga_acreditacion/"
+                    label="Carga de Acreditacion"
+                    replace
+                />
+
+                <q-route-tab
+                    to="/analista/CCNCI/"
+                    label="Carga de Cursos no Conducentes e Idiomas"
+                    replace
+                />
+
+                <q-route-tab
+                    to="/analista/inscripcion/"
+                    label="Inscripcion"
+                    replace
+                />
+
+                <q-route-tab
+                    to="/analista/revision_expedientes/"
+                    label="Revisión de Expedientes de Grado"
+                    replace
+                />
+
+                <q-route-tab to="/analista/record" label="Record" replace />
+
+                <q-route-tab to="/analista/listados" label="Listados" replace />
+            </q-tabs>
+            <q-tabs v-else-if="userTipo === 'jefe_control'" align="left">
+                <q-route-tab to="/jefe_control/inicio" label="Inicio" replace />
+
+                <q-route-tab
+                    to="/jefe_control/CMDatosPersonales/"
+                    label="Carga y Modificacion de Datos Personales"
+                    replace
+                />
+
+                <q-route-tab
+                    to="/jefe_control/carga_acreditacion/"
+                    label="Carga de Acreditacion"
+                    replace
+                />
+
+                <q-route-tab
+                    to="/jefe_control/CCNCI/"
+                    label="Carga de Cursos no Conducentes e Idiomas"
+                    replace
+                />
+
+                <q-route-tab
+                    to="/jefe_control/inscripcion/"
+                    label="Inscripcion"
+                    replace
+                />
+
+                <q-route-tab
+                    to="/jefe_control/revision_expedientes/"
+                    label="Revisión de Expedientes de Grado"
+                    replace
+                />
+
+                <q-route-tab to="/jefe_control/record" label="Record" replace />
+
+                <q-route-tab
+                    to="/jefe_control/listados"
+                    label="Listados"
+                    replace
+                />
+
+                <q-route-tab
+                    to="/jefe_control/modificacion_calificaciones"
+                    label="Modificación de Calificaciones"
+                    replace
+                />
+            </q-tabs>
         </q-header>
 
         <q-drawer show-if-above v-model="rightDrawerOpen" side="left" bordered>

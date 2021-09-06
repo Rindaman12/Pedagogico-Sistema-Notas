@@ -30,6 +30,22 @@
                     <div class="text-h6" color="white">Listados Subdireccion</div>
                 </q-card-section>
             </q-card>
+              <q-card
+                v-else-if="user.tipo === 'analista'"
+                class="my-card text-white"
+            >
+                <q-card-section class="header">
+                    <div class="text-h6" color="white">Listados Analista</div>
+                </q-card-section>
+            </q-card>
+              <q-card
+                v-else-if="user.tipo === 'jefe_control'"
+                class="my-card text-white"
+            >
+                <q-card-section class="header">
+                    <div class="text-h6" color="white">Listados Jefe Control</div>
+                </q-card-section>
+            </q-card>
         </div>
     </div>
 </template>

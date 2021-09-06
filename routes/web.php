@@ -52,3 +52,11 @@ Route::group([], __DIR__ . '/coordinadores/secretaria.php');
 //Archivo de rutas de subdireccion
 
 Route::group([], __DIR__ . '/subdireccion.php');
+
+//Archivo de rutas de analistas
+
+Route::group([], __DIR__ . '/controlestudio/analista.php');
+
+//Archivo de rutas de jefe control
+
+Route::group([], __DIR__ . '/controlestudio/jefe_control.php');
