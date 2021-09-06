@@ -172,6 +172,8 @@ export default {
                     location.href = "analista/inicio";
                 } else if (this.user.tipo === "jefe_control") {
                     location.href = "jefe_control/inicio";
+                } else if (this.user.tipo === "curriculo") {
+                    location.href = "curriculo/inicio";
                 }
             });
         },

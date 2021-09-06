@@ -195,6 +195,15 @@
                     replace
                 />
             </q-tabs>
+            <q-tabs v-else-if="userTipo === 'curriculo'" align="left">
+                <q-route-tab to="/curriculo/inicio" label="Inicio" replace />
+
+                <q-route-tab
+                    to="/curriculo/CMcursos"
+                    label="Carga y Modificar Cursos"
+                    replace
+                />
+            </q-tabs>
         </q-header>
 
         <q-drawer show-if-above v-model="rightDrawerOpen" side="left" bordered>
