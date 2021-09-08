@@ -198,7 +198,7 @@ export default {
                             title: "Operacion Exitosa",
                             confirmButtonText: "Ok",
                         }).then((res) => {
-                            location.pathname = `/home`;
+                            this.getUser();
                         });
                     })
                     .catch((err) => {
@@ -219,6 +219,32 @@ export default {
         },
         valid() {
             this.passwordError = false;
+        },
+        getUser: function () {
+            var url = "/find/user";
+            axios.get(url).then((response) => {
+                this.user = response.data;
+
+                if (this.user.tipo === "estudiante") {
+                    location.href = "/estudiante/inicio";
+                } else if (this.user.tipo === "profesor") {
+                    location.href = "/profesor/inicio";
+                } else if (this.user.tipo === "coordinador") {
+                    location.href = "/coordinador/inicio";
+                } else if (this.user.tipo === "coordinador_general") {
+                    location.href = "/coordinador_general/inicio";
+                } else if (this.user.tipo === "secretaria") {
+                    location.href = "/secretaria/inicio";
+                } else if (this.user.tipo === "subdireccion") {
+                    location.href = "/subdireccion/inicio";
+                } else if (this.user.tipo === "analista") {
+                    location.href = "/analista/inicio";
+                } else if (this.user.tipo === "jefe_control") {
+                    location.href = "/jefe_control/inicio";
+                } else if (this.user.tipo === "curriculo") {
+                    location.href = "/curriculo/inicio";
+                }
+            });
         },
         // Recaptcha methods
         recaptchaVerified(res) {
