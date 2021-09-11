@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -23,9 +24,14 @@ class UserController extends Controller
 
     public function findUser()
     {
-        //Muestra al usuario seleccionado en el dashboard
+        //Muestra al usuario logueado en la app
 
-        $user = Auth::user();
-        return response()->json($user);
+        if (Auth::check()) {
+            $user = Auth::user();
+            return response()->json($user);
+        } else {
+            Session::flush();
+            return redirect()->route('login');
+        }
     }
 }
