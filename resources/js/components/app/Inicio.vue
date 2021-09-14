@@ -30,3 +30,25 @@
     overflow: hidden;
 }
 </style>
+
+<script>
+export default {
+    beforeMount() {
+        this.getUser();
+    },
+
+    methods: {
+        getUser: function () {
+            var url = "/find/user";
+            axios
+                .get(url)
+
+                .catch(function (error) {
+                    if (error.response && error.response.status === 401) {
+                        location.reload();
+                    }
+                });
+        },
+    },
+};
+</script>

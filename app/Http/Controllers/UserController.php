@@ -26,12 +26,7 @@ class UserController extends Controller
     {
         //Muestra al usuario logueado en la app
 
-        if (Auth::check()) {
-            $user = Auth::user();
-            return response()->json($user);
-        } else {
-            Session::flush();
-            return redirect()->route('login');
-        }
+        $user = Auth::user();
+        return response()->json($user);
     }
 }

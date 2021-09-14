@@ -22,40 +22,31 @@
 </template>
 
 <script>
-import { useQuasar } from "quasar";
-import { ref } from "vue";
-
 export default {
     data() {
         return {
             user: [],
         };
     },
-    created() {
+    beforeMount() {
         this.getUser();
     },
-    setup() {
-        const $q = useQuasar();
 
-        const usuario = ref(null);
-        const password = ref(null);
-
-        return {
-            usuario,
-            password,
-
-            onReset() {
-                usuario.value = null;
-                password.value = null;
-            },
-        };
-    },
     methods: {
         getUser: function () {
             var url = "/find/user";
-            axios.get(url).then((response) => {
-                this.user = response.data;
-            });
+            axios
+                .get(url)
+
+                .then((response) => {
+                    this.user = response.data;
+                })
+
+                .catch(function (error) {
+                    if (error.response && error.response.status === 401) {
+                        location.reload();
+                    }
+                });
         },
     },
 };
