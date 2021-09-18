@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Alumnos extends Migration
+class Municipios extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,12 @@ class Alumnos extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('municipios', function (Blueprint $table) {
+            $table->id();
+            $table->string('nombre');
+            $table->foreignId("id_pais")->references("id")->on("pais")->constrained();
+            $table->foreignId("id_estado")->references("id")->on("estados")->constrained();
+        });
     }
 
     /**

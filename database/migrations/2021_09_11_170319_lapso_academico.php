@@ -13,7 +13,15 @@ class LapsoAcademico extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('lapso_academico', function (Blueprint $table) {
+            $table->id();
+            $table->integer('ano');
+            $table->string('nivel');
+            $table->integer('tipo');
+            $table->string('nombre');
+            $table->date('fecha_inicio');
+            $table->date('fecha_fin');
+        });
     }
 
     /**

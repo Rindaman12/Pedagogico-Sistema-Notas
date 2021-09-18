@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Pais extends Migration
+class PlanEstudios extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,14 @@ class Pais extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('plan_estudios', function (Blueprint $table) {
+            $table->id();
+            $table->integer('ano');
+            $table->string('nombre');
+            $table->string('tipo');
+            $table->date('fecha_inicio');
+            $table->date('fecha_fin');
+        });
     }
 
     /**
