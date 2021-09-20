@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Cursos extends Migration
+class CondicionCurso extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,10 @@ class Cursos extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('condicion_curso', function (Blueprint $table) {
+            $table->id();
+            $table->string('condicion');
+        });
     }
 
     /**
@@ -23,6 +26,6 @@ class Cursos extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('condicion_curso');
     }
 }

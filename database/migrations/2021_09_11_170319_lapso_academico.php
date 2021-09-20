@@ -15,8 +15,8 @@ class LapsoAcademico extends Migration
     {
         Schema::create('lapso_academico', function (Blueprint $table) {
             $table->id();
-            $table->integer('ano');
-            $table->string('nivel');
+            $table->integer('ano_lapso');
+            $table->string('nivel_lapso');
             $table->integer('tipo');
             $table->string('nombre');
             $table->date('fecha_inicio');
@@ -31,6 +31,6 @@ class LapsoAcademico extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('lapso_academico');
     }
 }

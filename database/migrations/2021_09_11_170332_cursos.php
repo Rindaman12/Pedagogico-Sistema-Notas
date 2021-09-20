@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Programas extends Migration
+class Cursos extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,18 @@ class Programas extends Migration
      */
     public function up()
     {
-        Schema::create('programas', function (Blueprint $table) {
+        Schema::create('cursos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('titulo_otorgado');
-            $table->integer('total_uc');
-            $table->integer('tot_cre_obli');
-            $table->integer('tot_cre_elec');
-            $table->integer('tot_cre_tut');
-            $table->string('descrip_nivel');
+            $table->string('nombre_curso');
+            $table->integer('unidad_credito');
+            $table->integer('horas_semanales');
+            $table->integer('horas_totales');
+            $table->integer('minimo_alumnos');
+            $table->integer('maximo_alumnos');
             $table->foreignId("id_plan_estudios")->references("id")->on("plan_estudios")->constrained();
             $table->foreignId("id_nivel_postgrado")->references("id")->on("nivel_postgrado")->constrained();
-            $table->integer('id_cnu')->nullable();
+            $table->foreignId("id_programa")->references("id")->on("programas")->constrained();
+            $table->foreignId("id_condicion")->references("id")->on("condicion_curso")->constrained();
         });
     }
 
@@ -35,6 +35,6 @@ class Programas extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('programas');
+        Schema::dropIfExists('cursos');
     }
 }

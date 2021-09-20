@@ -26,6 +26,6 @@ class Pais extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('pais');
     }
 }

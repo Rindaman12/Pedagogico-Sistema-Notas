@@ -42,8 +42,6 @@ class Alumnos extends Migration
             $table->foreignId("id_pais")->references("id")->on("pais")->constrained();
             $table->foreignId("id_estado")->references("id")->on("estados")->constrained();
             $table->foreignId("id_municipio")->references("id")->on("municipios")->constrained();
-            $table->foreign("ano_lapso")->references("ano")->on("lapso_academico")->constrained();
-            $table->foreign("nivel_lapso")->references("nivel")->on("lapso_academico")->constrained();
         });
     }
 
@@ -54,6 +52,6 @@ class Alumnos extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('alumnos');
     }
 }

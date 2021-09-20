@@ -30,6 +30,6 @@ class PlanEstudios extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('plan_estudios');
     }
 }

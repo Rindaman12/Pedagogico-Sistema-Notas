@@ -26,6 +26,6 @@ class NivelPostgrado extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('nivel_postgrado');
     }
 }

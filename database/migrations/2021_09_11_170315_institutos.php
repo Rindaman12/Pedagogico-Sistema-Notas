@@ -32,6 +32,6 @@ class Institutos extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('institutos');
     }
 }
