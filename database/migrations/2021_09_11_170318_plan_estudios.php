@@ -20,6 +20,7 @@ class PlanEstudios extends Migration
             $table->string('tipo');
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
+            $table->timestamps();
         });
     }
 

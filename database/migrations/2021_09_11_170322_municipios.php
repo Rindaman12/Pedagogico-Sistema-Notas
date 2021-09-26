@@ -18,6 +18,7 @@ class Municipios extends Migration
             $table->string('nombre');
             $table->foreignId("id_pais")->references("id")->on("pais")->constrained();
             $table->foreignId("id_estado")->references("id")->on("estados")->constrained();
+            $table->timestamps();
         });
     }
 

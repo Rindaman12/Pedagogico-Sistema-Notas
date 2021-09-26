@@ -16,6 +16,7 @@ class NivelPostgrado extends Migration
         Schema::create('nivel_postgrado', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
+            $table->timestamps();
         });
     }
 

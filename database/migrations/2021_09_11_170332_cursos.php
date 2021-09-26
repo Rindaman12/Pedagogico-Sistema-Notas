@@ -25,6 +25,7 @@ class Cursos extends Migration
             $table->foreignId("id_nivel_postgrado")->references("id")->on("nivel_postgrado")->constrained();
             $table->foreignId("id_programa")->references("id")->on("programas")->constrained();
             $table->foreignId("id_condicion")->references("id")->on("condicion_curso")->constrained();
+            $table->timestamps();
         });
     }
 

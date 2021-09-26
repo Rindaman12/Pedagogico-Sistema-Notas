@@ -20,6 +20,7 @@ class InscripcionAlumno extends Migration
             $table->foreignId("id_alumno")->references("id")->on("alumnos")->constrained();
             $table->foreignId("id_lapso_academico")->references("id")->on("lapso_academico")->constrained();
             $table->foreignId("id_curso")->references("id")->on("cursos")->constrained();
+            $table->timestamps();
         });
     }
 

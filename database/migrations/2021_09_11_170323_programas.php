@@ -25,6 +25,7 @@ class Programas extends Migration
             $table->foreignId("id_plan_estudios")->references("id")->on("plan_estudios")->constrained();
             $table->foreignId("id_nivel_postgrado")->references("id")->on("nivel_postgrado")->constrained();
             $table->integer('id_cnu')->nullable();
+            $table->timestamps();
         });
     }
 

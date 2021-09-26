@@ -42,6 +42,7 @@ class Alumnos extends Migration
             $table->foreignId("id_pais")->references("id")->on("pais")->constrained();
             $table->foreignId("id_estado")->references("id")->on("estados")->constrained();
             $table->foreignId("id_municipio")->references("id")->on("municipios")->constrained();
+            $table->timestamps();
         });
     }
 

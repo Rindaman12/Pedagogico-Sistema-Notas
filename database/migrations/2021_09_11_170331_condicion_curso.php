@@ -16,6 +16,7 @@ class CondicionCurso extends Migration
         Schema::create('condicion_curso', function (Blueprint $table) {
             $table->id();
             $table->string('condicion');
+            $table->timestamps();
         });
     }
 

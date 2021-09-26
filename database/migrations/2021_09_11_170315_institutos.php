@@ -22,6 +22,7 @@ class Institutos extends Migration
             $table->string('email_instituto');
             $table->string('rif_instituto');
             $table->string('estado_instituto');
+            $table->timestamps();
         });
     }
 

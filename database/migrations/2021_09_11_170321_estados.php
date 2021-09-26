@@ -17,6 +17,7 @@ class Estados extends Migration
             $table->id();
             $table->string('nombre');
             $table->foreignId("id_pais")->references("id")->on("pais")->constrained();
+            $table->timestamps();
         });
     }
 
