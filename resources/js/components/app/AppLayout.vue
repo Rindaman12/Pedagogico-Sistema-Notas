@@ -147,6 +147,12 @@
                 <q-route-tab to="/analista/record" label="Record" replace />
 
                 <q-route-tab to="/analista/listados" label="Listados" replace />
+
+                <q-route-tab
+                    to="/analista/institutos"
+                    label="Institutos"
+                    replace
+                />
             </q-tabs>
             <q-tabs v-else-if="userTipo === 'jefe_control'" align="left">
                 <q-route-tab to="/jefe_control/inicio" label="Inicio" replace />

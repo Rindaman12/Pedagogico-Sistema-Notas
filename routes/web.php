@@ -64,3 +64,7 @@ Route::group([], __DIR__ . '/controlestudio/jefe_control.php');
 //Archivo de rutas de curriculo
 
 Route::group([], __DIR__ . '/curriculo.php');
+
+//Archivo de rutas de institutos
+
+Route::group([], __DIR__ . '/institutos.php');

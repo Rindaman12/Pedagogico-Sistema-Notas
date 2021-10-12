@@ -26,6 +26,14 @@
 }
 
 .my-card {
+    width: 100%;
+    max-width: 450px;
+    margin: auto;
+    margin-top: 4%;
+    align-self: center;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
     border-radius: 15px;
     overflow: hidden;
 }

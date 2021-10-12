@@ -34,4 +34,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/analista/record', [AnalistaController::class, 'index']);
 
     Route::get('/analista/listados', [AnalistaController::class, 'index']);
+
+    Route::get('/analista/institutos', [AnalistaController::class, 'index']);
 });
