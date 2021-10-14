@@ -74,6 +74,13 @@ const routes = [
         component: () => import("../components/app/Institutos.vue"),
         props: true,
     },
+
+    {
+        path: "/analista/tipo_ingreso",
+        name: "tipo_ingreso",
+        component: () => import("../components/app/TipoIngreso.vue"),
+        props: true,
+    },
 ];
 
 const router = createRouter({

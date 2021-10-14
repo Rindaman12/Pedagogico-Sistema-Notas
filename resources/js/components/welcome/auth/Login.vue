@@ -103,7 +103,7 @@ export default {
     data() {
         return {
             showRecaptcha: true,
-            disable: true,
+            disable: false,
             user: [],
         };
     },

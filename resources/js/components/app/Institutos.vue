@@ -1,5 +1,4 @@
 <template>
-    <div class="welcome-image">
         <div class="q-pa-md row items-start q-gutter-md">
             <q-card class="my-card text-white">
                 <q-card-section class="header">
@@ -450,7 +449,6 @@
                 </div>
             </q-card>
         </div>
-    </div>
 </template>
 
 <script>
