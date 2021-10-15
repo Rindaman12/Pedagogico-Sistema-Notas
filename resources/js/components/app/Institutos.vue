@@ -1,454 +1,422 @@
 <template>
-        <div class="q-pa-md row items-start q-gutter-md">
-            <q-card class="my-card text-white">
-                <q-card-section class="header">
-                    <div class="text-h6" color="white">Institutos</div>
-                </q-card-section>
-                <div class="createButton">
-                    <q-btn
-                        label="Crear Instituto"
-                        color="primary"
-                        @click="crear = true"
-                    />
-                </div>
-                <div class="q-pa-md">
-                    <q-markup-table>
-                        <thead>
-                            <q-tr>
-                                <th>Modificar</th>
-                                <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Direccion</th>
-                                <th>Telefono</th>
-                                <th>Fax Instituto</th>
-                                <th>Email Instituto</th>
-                                <th>Rif Instituto</th>
-                                <th>Estado Instituto</th>
-                            </q-tr>
-                        </thead>
-                        <tbody>
-                            <q-tr
-                                v-for="instituto in institutos"
-                                :key="instituto.id"
+    <div class="q-pa-md row items-start q-gutter-md">
+        <q-card class="my-card text-white">
+            <q-card-section class="header">
+                <div class="text-h6" color="white">Institutos</div>
+            </q-card-section>
+            <div class="createButton">
+                <q-btn
+                    label="Crear Instituto"
+                    color="primary"
+                    @click="crear = true"
+                />
+            </div>
+            <div class="q-pa-md">
+                <q-markup-table :separator="separator" flat bordered>
+                    <thead>
+                        <q-tr>
+                            <th>Modificar</th>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Direccion</th>
+                            <th>Telefono</th>
+                            <th>Fax Instituto</th>
+                            <th>Email Instituto</th>
+                            <th>Rif Instituto</th>
+                            <th>Estado Instituto</th>
+                        </q-tr>
+                    </thead>
+                    <tbody>
+                        <q-tr
+                            v-for="instituto in institutos"
+                            :key="instituto.id"
+                        >
+                            <td class="text-center">
+                                <div class="items">
+                                    <button
+                                        class="delete_int"
+                                        type="button"
+                                        data-toggle="tooltip"
+                                        data-placement="top"
+                                        title="Eliminar Instituto De La DB"
+                                        v-on:click.prevent="
+                                            deleteInstituto(instituto)
+                                        "
+                                    >
+                                        <i
+                                            class="fas fa-trash-alt nav-icon"
+                                        ></i>
+                                    </button>
+                                    <button
+                                        class="edit_int"
+                                        type="button"
+                                        data-toggle="tooltip"
+                                        data-placement="top"
+                                        title="Editar Instituto"
+                                        @click="editar = true"
+                                        v-on:click.prevent="
+                                            findInstituto(instituto)
+                                        "
+                                    >
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <q-badge color="green">
+                                    {{ instituto.id }}
+                                </q-badge>
+                            </td>
+                            <td class="text-center">
+                                <q-badge color="purple">
+                                    {{ instituto.nombre }}
+                                </q-badge>
+                            </td>
+                            <td class="text-center">
+                                <q-badge color="primary">
+                                    {{ instituto.direccion }}
+                                </q-badge>
+                            </td>
+                            <td class="text-center">
+                                <q-badge color="teal">
+                                    {{ instituto.telefono }}
+                                </q-badge>
+                            </td>
+                            <td class="text-center">
+                                <q-badge color="accent">
+                                    {{ instituto.fax_instituto }}
+                                </q-badge>
+                            </td>
+                            <td class="text-center">
+                                <q-badge color="amber">
+                                    {{ instituto.email_instituto }}
+                                </q-badge>
+                            </td>
+                            <td class="text-center">
+                                <q-badge color="orange">
+                                    {{ instituto.rif_instituto }}
+                                </q-badge>
+                            </td>
+                            <td class="text-center">
+                                <q-badge color="red">
+                                    {{ instituto.estado_instituto }}
+                                </q-badge>
+                            </td>
+                        </q-tr>
+                    </tbody>
+                </q-markup-table>
+
+                <q-dialog
+                    persistent
+                    :maximized="maximizedToggle"
+                    transition-show="slide-up"
+                    transition-hide="slide-down"
+                    v-model="crear"
+                >
+                    <q-card>
+                        <q-bar>
+                            <q-space />
+
+                            <q-btn
+                                dense
+                                flat
+                                icon="minimize"
+                                @click="maximizedToggle = false"
+                                :disable="!maximizedToggle"
                             >
-                                <td>
-                                    <div class="items">
-                                        <button
-                                            class="delete_int"
-                                            type="button"
-                                            data-toggle="tooltip"
-                                            data-placement="top"
-                                            title="Eliminar Instituto De La DB"
-                                            v-on:click.prevent="
-                                                deleteInstituto(instituto)
-                                            "
-                                        >
-                                            <i
-                                                class="
-                                                    fas
-                                                    fa-trash-alt
-                                                    nav-icon
-                                                "
-                                            ></i>
-                                        </button>
-                                        <button
-                                            class="edit_int"
-                                            type="button"
-                                            data-toggle="tooltip"
-                                            data-placement="top"
-                                            title="Editar Instituto"
-                                            @click="editar = true"
-                                            v-on:click.prevent="
-                                                findInstituto(instituto)
-                                            "
-                                        >
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <q-badge color="green">
-                                        {{ instituto.id }}
-                                    </q-badge>
-                                </td>
-                                <td>
-                                    <q-badge color="purple">
-                                        {{ instituto.nombre }}
-                                    </q-badge>
-                                </td>
-                                <td>
-                                    <q-badge color="primary">
-                                        {{ instituto.direccion }}
-                                    </q-badge>
-                                </td>
-                                <td>
-                                    <q-badge color="teal">
-                                        {{ instituto.telefono }}
-                                    </q-badge>
-                                </td>
-                                <td>
-                                    <q-badge color="accent">
-                                        {{ instituto.fax_instituto }}
-                                    </q-badge>
-                                </td>
-                                <td>
-                                    <q-badge color="amber">
-                                        {{ instituto.email_instituto }}
-                                    </q-badge>
-                                </td>
-                                <td>
-                                    <q-badge color="orange">
-                                        {{ instituto.rif_instituto }}
-                                    </q-badge>
-                                </td>
-                                <td>
-                                    <q-badge color="red">
-                                        {{ instituto.estado_instituto }}
-                                    </q-badge>
-                                </td>
-                            </q-tr>
-                        </tbody>
-                    </q-markup-table>
-
-                    <q-dialog
-                        persistent
-                        :maximized="maximizedToggle"
-                        transition-show="slide-up"
-                        transition-hide="slide-down"
-                        v-model="crear"
-                    >
-                        <q-card>
-                            <q-bar>
-                                <q-space />
-
-                                <q-btn
-                                    dense
-                                    flat
-                                    icon="minimize"
-                                    @click="maximizedToggle = false"
-                                    :disable="!maximizedToggle"
+                                <q-tooltip
+                                    v-if="maximizedToggle"
+                                    class="bg-white text-primary"
+                                    >Minimizar</q-tooltip
                                 >
-                                    <q-tooltip
-                                        v-if="maximizedToggle"
-                                        class="bg-white text-primary"
-                                        >Minimizar</q-tooltip
-                                    >
-                                </q-btn>
-                                <q-btn
-                                    dense
-                                    flat
-                                    icon="crop_square"
-                                    @click="maximizedToggle = true"
-                                    :disable="maximizedToggle"
-                                >
-                                    <q-tooltip
-                                        v-if="!maximizedToggle"
-                                        class="bg-white text-primary"
-                                        >Maximizar</q-tooltip
-                                    >
-                                </q-btn>
-                                <q-btn dense flat icon="close" v-close-popup>
-                                    <q-tooltip class="bg-white text-primary"
-                                        >Cerrar</q-tooltip
-                                    >
-                                </q-btn>
-                            </q-bar>
-                            <form
-                                class="form-group"
-                                @submit.prevent="crearInstituto"
+                            </q-btn>
+                            <q-btn
+                                dense
+                                flat
+                                icon="crop_square"
+                                @click="maximizedToggle = true"
+                                :disable="maximizedToggle"
                             >
-                                <input-csfr />
-                                <q-card-section>
-                                    <div class="text-h6">Nombre</div>
-                                    <q-input
-                                        dense
-                                        name="nombre"
-                                        v-model="nombre"
-                                        autofocus
-                                        :rules="[
-                                            (val) =>
-                                                !!val ||
-                                                'No Puede Estar vacio.',
-                                        ]"
-                                    />
-                                </q-card-section>
-
-                                <q-card-section>
-                                    <div class="text-h6">Direccion</div>
-                                    <q-input
-                                        dense
-                                        name="direccion"
-                                        v-model="direccion"
-                                        :rules="[
-                                            (val) =>
-                                                !!val ||
-                                                'No Puede Estar vacio.',
-                                        ]"
-                                    />
-                                </q-card-section>
-
-                                <q-card-section>
-                                    <div class="text-h6">Telefono</div>
-                                    <q-input
-                                        dense
-                                        name="telefono"
-                                        v-model="telefono"
-                                        :rules="[
-                                            (val) =>
-                                                !!val ||
-                                                'No Puede Estar vacio.',
-                                        ]"
-                                    />
-                                </q-card-section>
-
-                                <q-card-section>
-                                    <div class="text-h6">Fax Instituto</div>
-                                    <q-input
-                                        dense
-                                        name="fax_instituto"
-                                        v-model="fax_instituto"
-                                        :rules="[
-                                            (val) =>
-                                                !!val ||
-                                                'No Puede Estar vacio.',
-                                        ]"
-                                    />
-                                </q-card-section>
-
-                                <q-card-section>
-                                    <div class="text-h6">Email Instituto</div>
-                                    <q-input
-                                        dense
-                                        name="email_instituto"
-                                        v-model="email_instituto"
-                                        :rules="[
-                                            (val) =>
-                                                !!val ||
-                                                'No Puede Estar vacio.',
-                                        ]"
-                                    />
-                                </q-card-section>
-
-                                <q-card-section>
-                                    <div class="text-h6">Rif Instituto</div>
-                                    <q-input
-                                        dense
-                                        name="rif_instituto"
-                                        v-model="rif_instituto"
-                                        :rules="[
-                                            (val) =>
-                                                !!val ||
-                                                'No Puede Estar vacio.',
-                                        ]"
-                                    />
-                                </q-card-section>
-
-                                <q-card-section>
-                                    <div class="text-h6">Estado Instituto</div>
-                                    <q-input
-                                        dense
-                                        name="estado_instituto"
-                                        v-model="estado_instituto"
-                                        :rules="[
-                                            (val) =>
-                                                !!val ||
-                                                'No Puede Estar vacio.',
-                                        ]"
-                                    />
-                                </q-card-section>
-
-                                <q-card-actions
-                                    align="right"
-                                    class="text-primary"
+                                <q-tooltip
+                                    v-if="!maximizedToggle"
+                                    class="bg-white text-primary"
+                                    >Maximizar</q-tooltip
                                 >
-                                    <q-btn
-                                        flat
-                                        label="Cancelar"
-                                        v-close-popup
-                                    />
-                                    <q-btn
-                                        type="submit"
-                                        value="Submit"
-                                        name="enviar"
-                                        flat
-                                        label="Crear Instituto"
-                                    />
-                                </q-card-actions>
-                            </form>
-                        </q-card>
-                    </q-dialog>
-
-                    <q-dialog
-                        persistent
-                        :maximized="maximizedToggle"
-                        transition-show="slide-up"
-                        transition-hide="slide-down"
-                        v-model="editar"
-                    >
-                        <q-card>
-                            <q-bar>
-                                <q-space />
-
-                                <q-btn
+                            </q-btn>
+                            <q-btn dense flat icon="close" v-close-popup>
+                                <q-tooltip class="bg-white text-primary"
+                                    >Cerrar</q-tooltip
+                                >
+                            </q-btn>
+                        </q-bar>
+                        <form
+                            class="form-group"
+                            @submit.prevent="crearInstituto"
+                        >
+                            <input-csfr />
+                            <q-card-section>
+                                <div class="text-h6">Nombre</div>
+                                <q-input
                                     dense
-                                    flat
-                                    icon="minimize"
-                                    @click="maximizedToggle = false"
-                                    :disable="!maximizedToggle"
-                                >
-                                    <q-tooltip
-                                        v-if="maximizedToggle"
-                                        class="bg-white text-primary"
-                                        >Minimizar</q-tooltip
-                                    >
-                                </q-btn>
-                                <q-btn
+                                    name="nombre"
+                                    v-model="nombre"
+                                    autofocus
+                                    :rules="[
+                                        (val) =>
+                                            !!val || 'No Puede Estar vacio.',
+                                    ]"
+                                />
+                            </q-card-section>
+
+                            <q-card-section>
+                                <div class="text-h6">Direccion</div>
+                                <q-input
                                     dense
+                                    name="direccion"
+                                    v-model="direccion"
+                                    :rules="[
+                                        (val) =>
+                                            !!val || 'No Puede Estar vacio.',
+                                    ]"
+                                />
+                            </q-card-section>
+
+                            <q-card-section>
+                                <div class="text-h6">Telefono</div>
+                                <q-input
+                                    dense
+                                    name="telefono"
+                                    v-model="telefono"
+                                    :rules="[
+                                        (val) =>
+                                            !!val || 'No Puede Estar vacio.',
+                                    ]"
+                                />
+                            </q-card-section>
+
+                            <q-card-section>
+                                <div class="text-h6">Fax Instituto</div>
+                                <q-input
+                                    dense
+                                    name="fax_instituto"
+                                    v-model="fax_instituto"
+                                    :rules="[
+                                        (val) =>
+                                            !!val || 'No Puede Estar vacio.',
+                                    ]"
+                                />
+                            </q-card-section>
+
+                            <q-card-section>
+                                <div class="text-h6">Email Instituto</div>
+                                <q-input
+                                    dense
+                                    name="email_instituto"
+                                    v-model="email_instituto"
+                                    :rules="[
+                                        (val) =>
+                                            !!val || 'No Puede Estar vacio.',
+                                    ]"
+                                />
+                            </q-card-section>
+
+                            <q-card-section>
+                                <div class="text-h6">Rif Instituto</div>
+                                <q-input
+                                    dense
+                                    name="rif_instituto"
+                                    v-model="rif_instituto"
+                                    :rules="[
+                                        (val) =>
+                                            !!val || 'No Puede Estar vacio.',
+                                    ]"
+                                />
+                            </q-card-section>
+
+                            <q-card-section>
+                                <div class="text-h6">Estado Instituto</div>
+                                <q-input
+                                    dense
+                                    name="estado_instituto"
+                                    v-model="estado_instituto"
+                                    :rules="[
+                                        (val) =>
+                                            !!val || 'No Puede Estar vacio.',
+                                    ]"
+                                />
+                            </q-card-section>
+
+                            <q-card-actions align="right" class="text-primary">
+                                <q-btn flat label="Cancelar" v-close-popup />
+                                <q-btn
+                                    type="submit"
+                                    value="Submit"
+                                    name="enviar"
                                     flat
-                                    icon="crop_square"
-                                    @click="maximizedToggle = true"
-                                    :disable="maximizedToggle"
-                                >
-                                    <q-tooltip
-                                        v-if="!maximizedToggle"
-                                        class="bg-white text-primary"
-                                        >Maximizar</q-tooltip
-                                    >
-                                </q-btn>
-                                <q-btn dense flat icon="close" v-close-popup>
-                                    <q-tooltip class="bg-white text-primary"
-                                        >Cerrar</q-tooltip
-                                    >
-                                </q-btn>
-                            </q-bar>
-                            <form
-                                class="form-group"
-                                @submit.prevent="updateInstituto"
+                                    label="Crear Instituto"
+                                />
+                            </q-card-actions>
+                        </form>
+                    </q-card>
+                </q-dialog>
+
+                <q-dialog
+                    persistent
+                    :maximized="maximizedToggle"
+                    transition-show="slide-up"
+                    transition-hide="slide-down"
+                    v-model="editar"
+                >
+                    <q-card>
+                        <q-bar>
+                            <q-space />
+
+                            <q-btn
+                                dense
+                                flat
+                                icon="minimize"
+                                @click="maximizedToggle = false"
+                                :disable="!maximizedToggle"
                             >
-                                <input-csfr />
-
-                                <q-card-section>
-                                    <div class="text-h6">Nombre</div>
-                                    <q-input
-                                        dense
-                                        name="nombre"
-                                        v-model="instituto.nombre"
-                                        autofocus
-                                        :rules="[
-                                            (val) =>
-                                                !!val ||
-                                                'No Puede Estar vacio.',
-                                        ]"
-                                    />
-                                </q-card-section>
-
-                                <q-card-section>
-                                    <div class="text-h6">Direccion</div>
-                                    <q-input
-                                        dense
-                                        name="direccion"
-                                        v-model="instituto.direccion"
-                                        :rules="[
-                                            (val) =>
-                                                !!val ||
-                                                'No Puede Estar vacio.',
-                                        ]"
-                                    />
-                                </q-card-section>
-
-                                <q-card-section>
-                                    <div class="text-h6">Telefono</div>
-                                    <q-input
-                                        dense
-                                        name="telefono"
-                                        v-model="instituto.telefono"
-                                        :rules="[
-                                            (val) =>
-                                                !!val ||
-                                                'No Puede Estar vacio.',
-                                        ]"
-                                    />
-                                </q-card-section>
-
-                                <q-card-section>
-                                    <div class="text-h6">Fax Instituto</div>
-                                    <q-input
-                                        dense
-                                        name="fax_instituto"
-                                        v-model="instituto.fax_instituto"
-                                        :rules="[
-                                            (val) =>
-                                                !!val ||
-                                                'No Puede Estar vacio.',
-                                        ]"
-                                    />
-                                </q-card-section>
-
-                                <q-card-section>
-                                    <div class="text-h6">Email Instituto</div>
-                                    <q-input
-                                        dense
-                                        name="email_instituto"
-                                        v-model="instituto.email_instituto"
-                                        :rules="[
-                                            (val) =>
-                                                !!val ||
-                                                'No Puede Estar vacio.',
-                                        ]"
-                                    />
-                                </q-card-section>
-
-                                <q-card-section>
-                                    <div class="text-h6">Rif Instituto</div>
-                                    <q-input
-                                        dense
-                                        name="rif_instituto"
-                                        v-model="instituto.rif_instituto"
-                                        :rules="[
-                                            (val) =>
-                                                !!val ||
-                                                'No Puede Estar vacio.',
-                                        ]"
-                                    />
-                                </q-card-section>
-
-                                <q-card-section>
-                                    <div class="text-h6">Estado Instituto</div>
-                                    <q-input
-                                        dense
-                                        name="estado_instituto"
-                                        v-model="instituto.estado_instituto"
-                                        :rules="[
-                                            (val) =>
-                                                !!val ||
-                                                'No Puede Estar vacio.',
-                                        ]"
-                                    />
-                                </q-card-section>
-
-                                <q-card-actions
-                                    align="right"
-                                    class="text-primary"
+                                <q-tooltip
+                                    v-if="maximizedToggle"
+                                    class="bg-white text-primary"
+                                    >Minimizar</q-tooltip
                                 >
-                                    <q-btn
-                                        flat
-                                        label="Cancelar"
-                                        v-close-popup
-                                    />
-                                    <q-btn
-                                        type="submit"
-                                        value="Submit"
-                                        name="enviar"
-                                        flat
-                                        label="Editar Instituto"
-                                    />
-                                </q-card-actions>
-                            </form>
-                        </q-card>
-                    </q-dialog>
-                </div>
-            </q-card>
-        </div>
+                            </q-btn>
+                            <q-btn
+                                dense
+                                flat
+                                icon="crop_square"
+                                @click="maximizedToggle = true"
+                                :disable="maximizedToggle"
+                            >
+                                <q-tooltip
+                                    v-if="!maximizedToggle"
+                                    class="bg-white text-primary"
+                                    >Maximizar</q-tooltip
+                                >
+                            </q-btn>
+                            <q-btn dense flat icon="close" v-close-popup>
+                                <q-tooltip class="bg-white text-primary"
+                                    >Cerrar</q-tooltip
+                                >
+                            </q-btn>
+                        </q-bar>
+                        <form
+                            class="form-group"
+                            @submit.prevent="updateInstituto"
+                        >
+                            <input-csfr />
+
+                            <q-card-section>
+                                <div class="text-h6">Nombre</div>
+                                <q-input
+                                    dense
+                                    name="nombre"
+                                    v-model="instituto.nombre"
+                                    autofocus
+                                    :rules="[
+                                        (val) =>
+                                            !!val || 'No Puede Estar vacio.',
+                                    ]"
+                                />
+                            </q-card-section>
+
+                            <q-card-section>
+                                <div class="text-h6">Direccion</div>
+                                <q-input
+                                    dense
+                                    name="direccion"
+                                    v-model="instituto.direccion"
+                                    :rules="[
+                                        (val) =>
+                                            !!val || 'No Puede Estar vacio.',
+                                    ]"
+                                />
+                            </q-card-section>
+
+                            <q-card-section>
+                                <div class="text-h6">Telefono</div>
+                                <q-input
+                                    dense
+                                    name="telefono"
+                                    v-model="instituto.telefono"
+                                    :rules="[
+                                        (val) =>
+                                            !!val || 'No Puede Estar vacio.',
+                                    ]"
+                                />
+                            </q-card-section>
+
+                            <q-card-section>
+                                <div class="text-h6">Fax Instituto</div>
+                                <q-input
+                                    dense
+                                    name="fax_instituto"
+                                    v-model="instituto.fax_instituto"
+                                    :rules="[
+                                        (val) =>
+                                            !!val || 'No Puede Estar vacio.',
+                                    ]"
+                                />
+                            </q-card-section>
+
+                            <q-card-section>
+                                <div class="text-h6">Email Instituto</div>
+                                <q-input
+                                    dense
+                                    name="email_instituto"
+                                    v-model="instituto.email_instituto"
+                                    :rules="[
+                                        (val) =>
+                                            !!val || 'No Puede Estar vacio.',
+                                    ]"
+                                />
+                            </q-card-section>
+
+                            <q-card-section>
+                                <div class="text-h6">Rif Instituto</div>
+                                <q-input
+                                    dense
+                                    name="rif_instituto"
+                                    v-model="instituto.rif_instituto"
+                                    :rules="[
+                                        (val) =>
+                                            !!val || 'No Puede Estar vacio.',
+                                    ]"
+                                />
+                            </q-card-section>
+
+                            <q-card-section>
+                                <div class="text-h6">Estado Instituto</div>
+                                <q-input
+                                    dense
+                                    name="estado_instituto"
+                                    v-model="instituto.estado_instituto"
+                                    :rules="[
+                                        (val) =>
+                                            !!val || 'No Puede Estar vacio.',
+                                    ]"
+                                />
+                            </q-card-section>
+
+                            <q-card-actions align="right" class="text-primary">
+                                <q-btn flat label="Cancelar" v-close-popup />
+                                <q-btn
+                                    type="submit"
+                                    value="Submit"
+                                    name="enviar"
+                                    flat
+                                    label="Editar Instituto"
+                                />
+                            </q-card-actions>
+                        </form>
+                    </q-card>
+                </q-dialog>
+            </div>
+        </q-card>
+    </div>
 </template>
 
 <script>
@@ -472,6 +440,7 @@ export default {
         return {
             crear: ref(false),
             editar: ref(false),
+            separator: ref("cell"),
             maximizedToggle: ref(true),
             nombre,
             direccion,
@@ -626,7 +595,7 @@ export default {
         },
 
         updateInstituto: function () {
-            var url = "/institutos/" + this.instituto.id;
+             var url = "/institutos/" + this.instituto.id;
             axios
                 .put(url, this.instituto)
                 .then((res) => {

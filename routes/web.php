@@ -72,3 +72,7 @@ Route::group([], __DIR__ . '/institutos.php');
 //Archivo de rutas de tipos de ingresos
 
 Route::group([], __DIR__ . '/tipo_ingresos.php');
+
+//Archivo de rutas de nivel postgrado
+
+Route::group([], __DIR__ . '/nivel_postgrado.php');

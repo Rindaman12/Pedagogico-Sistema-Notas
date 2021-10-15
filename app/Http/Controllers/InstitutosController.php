@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Instituto;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -96,7 +97,7 @@ class InstitutosController extends Controller
      //Actualiza el instituto seleccionado
 
         $validator = Validator::make($request->all(), [
-        'nombre' => ['required', 'string', 'min:2', 'max:100', 'unique:institutos'],
+        'nombre' => ['required', 'string', 'min:2', 'max:100', Rule::unique('institutos')->ignore($id)],
         'direccion' => ['required', 'string', 'min:2', 'max:60'],
         'telefono' => ['required', 'string', 'min:2', 'max:20'],
         'fax_instituto' => ['required', 'string', 'min:2', 'max:20'],

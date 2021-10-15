@@ -159,6 +159,12 @@
                     label="Tipo Ingresos"
                     replace
                 />
+
+                  <q-route-tab
+                    to="/analista/nivel_postgrado"
+                    label="Nivel Postgrado"
+                    replace
+                />
             </q-tabs>
             <q-tabs v-else-if="userTipo === 'jefe_control'" align="left">
                 <q-route-tab to="/jefe_control/inicio" label="Inicio" replace />

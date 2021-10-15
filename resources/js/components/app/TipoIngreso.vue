@@ -12,7 +12,7 @@
                     />
                 </div>
                 <div class="q-pa-md">
-                    <q-markup-table>
+                    <q-markup-table :separator="separator" flat bordered>
                         <thead>
                             <q-tr>
                                 <th>Modificar</th>
@@ -25,7 +25,7 @@
                                 v-for="tipoingreso in tipoingresos"
                                 :key="tipoingreso.id"
                             >
-                                <td>
+                                <td class="text-center">
                                     <div class="items">
                                         <button
                                             class="delete_int"
@@ -60,12 +60,12 @@
                                         </button>
                                     </div>
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     <q-badge color="green">
                                         {{ tipoingreso.id }}
                                     </q-badge>
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     <q-badge color="purple">
                                         {{ tipoingreso.nombre }}
                                     </q-badge>
@@ -205,6 +205,7 @@ export default {
     setup() {
         const nombre = ref(null);
         return {
+            separator: ref('cell'),
             crear: ref(false),
             editar: ref(false),
             nombre,
@@ -262,7 +263,6 @@ export default {
                 .then((response) => {
                     setTimeout(() => {
                         this.tipoingreso = response.data;
-                        this.id = response.data.id;
                     }, 1000);
                 })
 
@@ -398,5 +398,13 @@ export default {
 .createButton {
     padding-top: 2%;
     padding-left: 2%;
+}
+.my-card {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    margin-top: 4%;
+    display: flex;
+
 }
 </style>

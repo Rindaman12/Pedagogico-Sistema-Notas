@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TipoIngreso;
+use App\Models\NivelPostgrado;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class TipoIngresoController extends Controller
+class NivelPostgradoController extends Controller
 {
     /**
      * Show the application main.
@@ -26,10 +26,10 @@ class TipoIngresoController extends Controller
     {
         // Se muestra la lista de tipo de ingreso
 
-        $tipoingresos = TipoIngreso::get();
+        $nivel_postgrados = NivelPostgrado::get();
 
         return response()
-            ->json(['tipoingresos' => $tipoingresos]);
+            ->json(['nivel_postgrados' => $nivel_postgrados]);
     }
 
    
@@ -37,16 +37,16 @@ class TipoIngresoController extends Controller
     {
         //Destruye el tipo ingresos seleccionado
 
-        $tipoingreso = TipoIngreso::findOrFail($id);
-        $tipoingreso->delete();
+        $nivel_postgrado = NivelPostgrado::findOrFail($id);
+        $nivel_postgrado->delete();
     }
 
     public function show($id)
     {
         // Muestra el TipoIngreso seleccionado
 
-        $tipoingreso = TipoIngreso::find($id);
-        return response()->json($tipoingreso);
+        $nivel_postgrado = NivelPostgrado::find($id);
+        return response()->json($nivel_postgrado);
     }
 
     public function ingresar(Request $request)
@@ -57,7 +57,7 @@ class TipoIngresoController extends Controller
         //Se validan los campos de la DB
 
         $validator = Validator::make($request->all(), [
-            'nombre' => ['required', 'string', 'min:2', 'max:100', 'unique:tipo_ingreso'],
+            'nombre' => ['required', 'string', 'min:2', 'max:100', 'unique:nivel_postgrado'],
         ]);
 
         //Si hay un error lo muestra en formato json
@@ -68,12 +68,12 @@ class TipoIngresoController extends Controller
 
         // Se guardan los datos en la DB
 
-        $tipoingreso = TipoIngreso::create([
+        $nivel_postgrado = NivelPostgrado::create([
 
             'nombre' => $request->nombre,
         ]);
 
-        return  $tipoingreso;
+        return $nivel_postgrado;
     }
 
     public function update(Request $request, $id)
@@ -82,15 +82,15 @@ class TipoIngresoController extends Controller
      //Actualiza el TipoIngreso seleccionado
 
         $validator = Validator::make($request->all(), [
-        'nombre' => ['required', 'string', 'min:2', 'max:100', Rule::unique('tipo_ingreso')->ignore($id)],
+        'nombre' => ['required', 'string', 'min:2', 'max:100', Rule::unique('nivel_postgrado')->ignore($id)],
     ]);
 
         if ($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
 
-        $tipoingreso = TipoIngreso::find($id)->update($request->all());
+        $nivel_postgrado = NivelPostgrado::find($id)->update($request->all());
 
-        return   $tipoingreso;
+        return $nivel_postgrado;
     }
 }

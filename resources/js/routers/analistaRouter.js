@@ -81,6 +81,13 @@ const routes = [
         component: () => import("../components/app/TipoIngreso.vue"),
         props: true,
     },
+
+    {
+        path: "/analista/nivel_postgrado",
+        name: "nivel_postgrado",
+        component: () => import("../components/app/NivelPostgrado.vue"),
+        props: true,
+    },
 ];
 
 const router = createRouter({
